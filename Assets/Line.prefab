@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1784037653351853485}
   Smoothness: 0.5
-  StartingWidth: 0.3
-  EndingWidth: 0.3
+  StartingWidth: 0.2
+  EndingWidth: 0.2
   NumCapVertices: 10
 --- !u!120 &1784037653351853485
 LineRenderer:
@@ -102,8 +102,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.098423004
-        value: 0.37178993
+        time: 0.10422897
+        value: 0.04406166
         inSlope: 0
         outSlope: 0
         tangentMode: 0

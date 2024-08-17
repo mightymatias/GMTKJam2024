@@ -5,22 +5,53 @@ using UnityEngine;
 public class LineGenerator : MonoBehaviour
 {
     public GameObject linePrefab;
-    public GameObject canvasObject; // Reference to the canvas GameObject
-    
+    public GameObject canvasObject; // Reference to the Canvas GameObject
+    public GameObject leftObject; // Reference to the Left GameObject
+
     Line activeLine;
-    
     public List<Line> allLines = new List<Line>();
 
-    // Define the boundaries of your canvas (set these values based on your specific canvas size)
-    public Vector2 canvasMin = new Vector2(-5f, -5f); // Example lower-left corner
-    public Vector2 canvasMax = new Vector2(5f, 5f);   // Example upper-right corner
+    // Define the minimum Y coordinate required for line drawing to start
+    public float minimumCanvasY = 0f;
+
+    // To track the previous position of the Left object
+    private Vector2 previousLeftPosition;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        previousLeftPosition = leftObject.transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        // Get the current position of the Left object
+        Vector2 currentLeftPosition = leftObject.transform.position;
+
+        // Calculate the movement delta of the Left object
+        Vector2 leftDelta = currentLeftPosition - previousLeftPosition;
+
+        // If the Left object has moved, update the positions of all lines
+        if (leftDelta != Vector2.zero)
+        {
+            MoveLinesWithCanvas(leftDelta);
+            previousLeftPosition = currentLeftPosition;
+        }
+
+        // Get the current Y position of the Canvas (attached to the Left object)
+        RectTransform canvasRect = canvasObject.GetComponent<RectTransform>();
+        float currentCanvasY = canvasRect.anchoredPosition.y;
+
+        if (currentCanvasY < minimumCanvasY)
+        {
+            // Debug.Log("Canvas is below the required Y position, no drawing allowed.");
+            return; // Exit Update early to prevent any line drawing
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject newLine = Instantiate(linePrefab);
+            GameObject newLine = Instantiate(linePrefab, canvasObject.transform); // Parent to Canvas
             activeLine = newLine.GetComponent<Line>();
             allLines.Add(activeLine); // Add the newly created line to the list
         }
@@ -29,7 +60,6 @@ public class LineGenerator : MonoBehaviour
         {
             if (activeLine != null)
             {
-                // Get the total distance and log it
                 float totalDistance = activeLine.GetTotalDistance();
                 Debug.Log($"Total Distance: {totalDistance}");
             }
@@ -39,21 +69,42 @@ public class LineGenerator : MonoBehaviour
         if (activeLine != null)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log($"Current Position: {mousePos}");
-            // Clamp the mouse position within the canvas boundaries
             mousePos = ClampToCanvas(mousePos);
-
             activeLine.UpdateLine(mousePos);
         }
+
         if (Input.GetMouseButtonDown(1))
         {
             DeleteOldestLine();
         }
     }
+    void MoveLinesWithCanvas(Vector2 leftDelta)
+    {
+        foreach (Line line in allLines)
+        {
+            // Get the LineRenderer component from the line
+            LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
+
+            // Loop through all points in the LineRenderer and update their positions
+            for (int i = 0; i < lineRenderer.positionCount; i++)
+            {
+                // Get the current position of the point
+                Vector3 currentPosition = lineRenderer.GetPosition(i);
+
+                // Update the position by applying the movement delta
+                Vector3 newPosition = currentPosition + (Vector3)leftDelta;
+
+                // Set the new position back to the LineRenderer
+                lineRenderer.SetPosition(i, newPosition);
+            }
+        }
+    }
+
+
+
 
     Vector2 ClampToCanvas(Vector2 position)
     {
-        // Get the RectTransform of the canvas GameObject
         RectTransform canvasRect = canvasObject.GetComponent<RectTransform>();
 
         // Convert the corners of the RectTransform to world space
@@ -74,14 +125,10 @@ public class LineGenerator : MonoBehaviour
     {
         if (allLines.Count > 0)
         {
-            // Find the oldest line (first in the list)
             Line oldestLine = allLines[0];
-
-            // Log the length of the line being deleted
             float lengthOfOldestLine = oldestLine.GetTotalDistance();
             Debug.Log($"Deleting Oldest Line with Length: {lengthOfOldestLine}");
 
-            // Remove it from the list and destroy its GameObject
             allLines.RemoveAt(0);
             Destroy(oldestLine.gameObject);
         }
