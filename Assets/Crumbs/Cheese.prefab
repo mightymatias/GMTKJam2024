@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5603089745635317149}
+  - component: {fileID: 1844654335262254711}
   - component: {fileID: 6600082965466659682}
-  - component: {fileID: 6359873009668959910}
   - component: {fileID: 9207686105511560458}
   - component: {fileID: 5488655603223987341}
   m_Layer: 0
-  m_Name: Crumb
-  m_TagString: Untagged
+  m_Name: Cheese
+  m_TagString: Crumb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844654335262254711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887881511940189312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb9903b8fefa074980bc3579428dc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookedVersion: {fileID: 7648132237075755350, guid: 86c32d68e900d3b45a96f5813e8e595a, type: 3}
+  cutVersion: {fileID: 0}
+  skeweredVersion: {fileID: 0}
+  crumbName: 
 --- !u!212 &6600082965466659682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,18 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6359873009668959910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2887881511940189312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552cf41989a9d244181899c8f806e7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &9207686105511560458
 Rigidbody2D:
   serializedVersion: 4
