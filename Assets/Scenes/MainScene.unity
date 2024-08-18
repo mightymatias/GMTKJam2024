@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127416702}
   - component: {fileID: 127416701}
+  - component: {fileID: 127416703}
   m_Layer: 0
   m_Name: GMTK-Sign-AcornPlates-v1
   m_TagString: Untagged
@@ -206,6 +207,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &127416703
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127416700}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.66083884, y: 0.35510278}
+  - {x: 0.62795913, y: 0.24331117}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &144406558
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144406560}
   - component: {fileID: 144406559}
+  - component: {fileID: 144406562}
   m_Layer: 0
   m_Name: GMTK-Sign-Toothpicks-v1
   m_TagString: Untagged
@@ -290,6 +333,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &144406562
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144406558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.45998967, y: 0.25392795}
+  - {x: 0.5940002, y: 0.3792255}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &187347503
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 671357409}
   - component: {fileID: 671357408}
+  - component: {fileID: 671357410}
   m_Layer: 0
   m_Name: GMTK-ForegroundCaveEntrance-v1
   m_TagString: Untagged
@@ -555,12 +640,26 @@ Transform:
   m_GameObject: {fileID: 671357407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.65, y: 0, z: 0}
+  m_LocalPosition: {x: 7.27, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &671357410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671357407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce2269608d249f458af10e878201cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 754116243}
+  parallaxFactor: 0.25
 --- !u!1 &681698974
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681698976}
+  - component: {fileID: 681698977}
   - component: {fileID: 681698975}
   m_Layer: 0
   m_Name: GMTK-StrawShute-Front-v1
@@ -616,8 +716,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -844374541
-  m_SortingLayer: 2
+  m_SortingLayerID: -69692501
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 11eb2fcbc04f247ecb93770a04e9c02f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -642,9 +742,24 @@ Transform:
   m_LocalPosition: {x: -12.67, y: 3.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1951474893}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681698977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681698974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce2269608d249f458af10e878201cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 754116243}
+  parallaxFactor: 0.2
 --- !u!1 &754116240
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812484657}
   - component: {fileID: 812484656}
+  - component: {fileID: 812484658}
   m_Layer: 0
   m_Name: GMTK-PincerAntStation-v1
   m_TagString: Untagged
@@ -843,6 +959,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &812484658
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812484655}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.07704, y: 0.13899088}
+  - {x: 0.49592972, y: -0.5661795}
+  - {x: 1.8619301, y: -0.28615737}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &814238179
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +1011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814238181}
   - component: {fileID: 814238180}
+  - component: {fileID: 814238182}
   m_Layer: 0
   m_Name: GMTK-Sign-OrderPickup-v1
   m_TagString: Untagged
@@ -927,6 +1086,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &814238182
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814238179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5104133, y: 0.15094638}
+  - {x: 0.6076442, y: 0.27994287}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1093397160
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +1137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1093397162}
   - component: {fileID: 1093397161}
+  - component: {fileID: 1093397163}
   m_Layer: 0
   m_Name: GMTK-ToothpickBottleStation-v1
   m_TagString: Untagged
@@ -1011,6 +1212,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1093397163
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093397160}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.0536456, y: -0.898165}
+  - {x: 2.7000103, y: -0.120069265}
+  - {x: -2.7094462, y: -0.2921517}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1121454224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121454226}
   - component: {fileID: 1121454225}
+  - component: {fileID: 1121454227}
   m_Layer: 0
   m_Name: GMTK-Sign-PincerAnt-v1
   m_TagString: Untagged
@@ -1095,6 +1339,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1121454227
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121454224}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.6527686, y: 0.26639676}
+  - {x: 0.6699562, y: 0.36092472}
+  - {x: 0.6699562, y: 0.36092472}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1248863385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248863387}
   - component: {fileID: 1248863386}
+  - component: {fileID: 1248863388}
   m_Layer: 0
   m_Name: GMTK-AcornPlateStation-v1
   m_TagString: Untagged
@@ -1179,6 +1466,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1248863388
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248863385}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.9020034, y: -0.07862544}
+  - {x: -1.4715905, y: 0.84655476}
+  - {x: -0.83041954, y: 0.7961216}
+  - {x: -0.40571785, y: 0.55579734}
+  - {x: -0.2604823, y: 0.25384092}
+  - {x: -0.38824797, y: 0.081847906}
+  - {x: -1.9017162, y: -0.10587454}
+  - {x: -1.8966751, y: -0.1399374}
+  - {x: -0.37161827, y: 0.03641343}
+  - {x: -0.3074503, y: 0.15148783}
+  - {x: 0.14392519, y: 0.44251275}
+  - {x: 0.62641716, y: 0.5138264}
+  - {x: 0.93603516, y: 0.46198583}
+  - {x: 1.0663152, y: 0.22223926}
+  - {x: 1.1426191, y: 0.08021569}
+  - {x: 1.793893, y: -0.12776637}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1350998729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1661,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1410398747}
   - component: {fileID: 1410398746}
+  - component: {fileID: 1410398748}
+  - component: {fileID: 1410398752}
+  - component: {fileID: 1410398751}
+  - component: {fileID: 1410398750}
+  - component: {fileID: 1410398749}
   m_Layer: 0
   m_Name: GMTK-PaperclipStorageBox-v1
   m_TagString: Untagged
@@ -1364,8 +1711,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -844374541
-  m_SortingLayer: 2
+  m_SortingLayerID: -752358519
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b12fd2d1d879c461f9c96891b9f3d566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1393,6 +1740,221 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1410398748
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410398745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.4254007, y: 1.3159148}
+  - {x: -3.0312424, y: 2.3395004}
+  - {x: -2.6249342, y: 1.9387667}
+  - {x: -2.0202312, y: 0.97819793}
+  - {x: -0.89922523, y: -0.5607095}
+  - {x: -0.11212921, y: -1.5793562}
+  - {x: -0.68913555, y: -1.1510448}
+  - {x: -1.1814175, y: -2.10225}
+  - {x: -1.2138948, y: -2.25561}
+  - {x: 1.483738, y: -2.3679883}
+  - {x: 2.1787815, y: -1.5957696}
+  - {x: 2.228177, y: -0.8002105}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1410398749
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410398745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.1427975, y: 1.2569557}
+  - {x: -1.09091, y: 1.8800623}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1410398750
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410398745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.5196905, y: 0.33303952}
+  - {x: -0.24219608, y: 1.2032397}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1410398751
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410398745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.4883423, y: -1.0313482}
+  - {x: 1.0469894, y: 0.18263459}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1410398752
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410398745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.48929024, y: -2.3635068}
+  - {x: 2.2179995, y: -0.79499745}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1460005282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,8 +2140,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -844374541
-  m_SortingLayer: 2
+  m_SortingLayerID: -752358519
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3b3e8e49114548aa8f84520dea3d0e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1747,6 +2309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771743605}
   - component: {fileID: 1771743604}
+  - component: {fileID: 1771743606}
   m_Layer: 0
   m_Name: GMTK-Sign-Storage-v1
   m_TagString: Untagged
@@ -1821,6 +2384,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1771743606
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771743603}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.6640887, y: 0.38423038}
+  - {x: 0.64872026, y: 0.24590755}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1811552234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +2524,14 @@ PrefabInstance:
     - target: {fileID: 558718124125691246, guid: 0182cf20d6818de4ba2b255fb180d43b, type: 3}
       propertyPath: m_Interpolate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272600252186848884, guid: 0182cf20d6818de4ba2b255fb180d43b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272600252186848884, guid: 0182cf20d6818de4ba2b255fb180d43b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -844374541
       objectReference: {fileID: 0}
     - target: {fileID: 4410495369802026020, guid: 0182cf20d6818de4ba2b255fb180d43b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2037,8 +2649,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -844374541
-  m_SortingLayer: 2
+  m_SortingLayerID: -69692501
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 879f881ae0cb5462da3d578e64d3fb32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2059,12 +2671,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951474891}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.839, y: 2.501, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8310003, y: -1.1290002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 681698976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990053269
 GameObject:
@@ -2076,6 +2688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1990053271}
   - component: {fileID: 1990053270}
+  - component: {fileID: 1990053272}
   m_Layer: 0
   m_Name: GMTK-Sign-FireAnt-v1
   m_TagString: Untagged
@@ -2150,6 +2763,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1990053272
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990053269}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.6763294, y: 0.36225772}
+  - {x: 0.6384814, y: 0.24871421}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &2090012775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,6 +2814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2090012777}
   - component: {fileID: 2090012776}
+  - component: {fileID: 2090012778}
   m_Layer: 0
   m_Name: GMTK-Sign-CrumbShute-v1
   m_TagString: Untagged
@@ -2234,6 +2889,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &2090012778
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090012775}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.66995573, y: 0.36951816}
+  - {x: 0.60980177, y: 0.24920976}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &660599177624642154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2474,17 +3170,117 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -1.0617404
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: -0.7168782
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: -0.9600161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: -0.6671157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[2].x
+      value: -0.9008964
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[2].y
+      value: -0.5426533
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[3].x
+      value: -0.7667352
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[3].y
+      value: -0.4456644
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[4].x
+      value: -0.98742026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[4].y
+      value: -0.30487084
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[5].x
+      value: -0.9003427
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[5].y
+      value: -0.10225892
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[6].x
+      value: -0.5788182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[6].y
+      value: -0.32253408
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[7].x
+      value: -0.24882448
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[7].y
+      value: -0.15764141
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[8].x
+      value: 0.11159611
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[8].y
+      value: -0.14784288
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[9].x
+      value: 0.95824957
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[9].y
+      value: -0.31158948
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[10].x
+      value: 0.95824957
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[10].y
+      value: -0.31158948
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[11].x
+      value: 0.95824957
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[11].y
+      value: -0.31158948
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[12].x
+      value: 0.95824957
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068149270255870432, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
+      propertyPath: m_Points.Array.data[12].y
+      value: -0.31158948
+      objectReference: {fileID: 0}
     - target: {fileID: 3302678013004566232, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
       propertyPath: m_Name
       value: FireAntOven
-      objectReference: {fileID: 0}
-    - target: {fileID: 5088288750030599685, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5088288750030599685, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -844374541
       objectReference: {fileID: 0}
     - target: {fileID: 8228636240303218170, guid: 300af4f2075c9da4a90237ff158de2c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2665,7 +3461,6 @@ SceneRoots:
   - {fileID: 1811552236}
   - {fileID: 754116243}
   - {fileID: 681698976}
-  - {fileID: 1951474893}
   - {fileID: 2090012777}
   - {fileID: 1121454226}
   - {fileID: 812484657}
