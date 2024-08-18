@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         nearbyCrumb = null;
         heldObjectOGParent = heldObject.transform.parent;
         heldObject.transform.SetParent(this.transform);
+        heldObject.transform.position = transform.Find("Hold Point").position;
         heldObject.GetComponent<Rigidbody2D>().isKinematic = true;
         heldObject.GetComponent<Rigidbody2D>().simulated = false;
         Debug.Log("Picked up Object");
@@ -111,10 +112,8 @@ public class PlayerController : MonoBehaviour
             if (!closestStation.CanInteractWithCrumb(heldObject.GetComponent<Crumb>())){
                 Debug.Log("Crumb can't interact with this station");
             } else { // Otherwise the crumb can interact with this station, and will be put on the station
-                heldObject.transform.position = closestStation.transform.position; // Snap the crumb to the station's position
-                UnityEngine.Vector3 newPos = heldObject.transform.position;
-                newPos.z -= 1;
-                heldObject.transform.position = newPos;
+                heldObject.transform.position = closestStation.transform.Find("Interact Position").position;
+                //heldObject.transform.position = closestStation.transform.position; // Snap the crumb to the station's position
                 heldObject.transform.SetParent(closestStation.transform); // Set the crumb's parent to the station
                 Debug.Log("Successfully put crumb in station");
                 closestStation.StartInteraction(heldObject.GetComponent<Crumb>()); // Start the station interaction
