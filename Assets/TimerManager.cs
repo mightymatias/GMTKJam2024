@@ -4,12 +4,10 @@ public class TimerManager : MonoBehaviour
 {
     public GameObject timerPrefab; // Prefab of the timer with the Text UI component
 
-    // Method to create and start a new timer
-    public void CreateAndStartTimer(Vector3 position, float duration)
+    // Method to create a new timer and return the Timer component
+    public Timer CreateTimer()
     {
-        GameObject newTimerObject = Instantiate(timerPrefab, position, Quaternion.identity, transform);
-
-        Timer timerComponent = newTimerObject.GetComponent<Timer>();
-        timerComponent.StartTimer(duration);
+        GameObject newTimerObject = Instantiate(timerPrefab, transform);
+        return newTimerObject.GetComponent<Timer>();
     }
 }
