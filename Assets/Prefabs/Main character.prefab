@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6784656790059493803}
   - component: {fileID: 558718124125691246}
   - component: {fileID: 4472989221737310057}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Main character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -69692501
-  m_SortingLayer: 3
+  m_SortingLayerID: -844374541
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2067837168, guid: d8966611d40604a12b2d206932529da9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  interactionRange: 1000
+  interactionRange: 2
 --- !u!50 &558718124125691246
 Rigidbody2D:
   serializedVersion: 4
