@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5746225509493404674}
   - component: {fileID: 1201289440131693652}
   - component: {fileID: 3851588774192537949}
+  - component: {fileID: 827772020976633108}
   m_Layer: 0
   m_Name: Crumb Spawner
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.87, y: 1.83, z: -0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6459, y: 0.6459, z: 0.6459}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -69692501
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,5 +98,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6c3a4c894f62b4388f3b831e981581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 2887881511940189312, guid: 96d949d914ca77641acad3f15a6841a7, type: 3}
+  spawnableCrumbs:
+  - {fileID: 4109236822028810062, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
+  - {fileID: 2486666395735429313, guid: 91f7e245299af4e45b682fdbac4cdfbf, type: 3}
+  - {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
   spawnKey: 32
+--- !u!68 &827772020976633108
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273912001831274006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.3901435, y: 0.13981354}
+  - {x: 0.13181677, y: -1.4980031}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
