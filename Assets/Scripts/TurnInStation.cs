@@ -9,6 +9,10 @@ public class TurnInStation : InteractionStation
         Debug.Log(crumb.crumbName + " is cooked in the oven!");
     }
 
+    protected override void OnInteractionStart(Crumb crumb){
+        Debug.Log(crumb.crumbName + " has started interaction");
+    }
+
     public override bool CanInteractWithCrumb(Crumb crumb){
         return crumb.isFinalProduct; // Returns true if crumb has a cooked version
     }
