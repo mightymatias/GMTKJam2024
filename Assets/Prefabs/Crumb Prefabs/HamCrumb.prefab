@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8401007234402914486}
   - component: {fileID: 3342367693313249669}
   - component: {fileID: 1873822173315498880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HamCrumb
   m_TagString: Crumb
   m_Icon: {fileID: 0}
@@ -90,8 +90,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 310436037
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1892235486, guid: ce5f1d72be1a14a54bcf0f7680cd85f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -193,7 +193,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
