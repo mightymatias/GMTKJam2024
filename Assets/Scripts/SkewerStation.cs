@@ -7,7 +7,7 @@ public class SkewerStation : InteractionStation
 
     protected override void OnInteractionStart(Crumb crumb)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Started SkewerStation");
     }
 
 
