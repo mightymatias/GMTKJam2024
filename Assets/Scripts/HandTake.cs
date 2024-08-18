@@ -16,7 +16,10 @@ public class HandTake : MonoBehaviour
             //Intermediary Code would go here
 
             // Sliding back to the original position
-            StartCoroutine(SlideToPosition(originalPosition, oneWayMovementDuration));
+            StartCoroutine(SlideToPosition(originalPosition, oneWayMovementDuration, () => {
+                Destroy(gameObject);
+            }));
+            
         }));
     }
 
@@ -41,6 +44,12 @@ public class HandTake : MonoBehaviour
 
     public void moveFoodtoHand(){
 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other){
+        GameObject otherObject = other.gameObject;
+        otherObject.transform.position = transform.Find("Interact Position").position;
+        otherObject.transform.SetParent(transform);
     }
         
 

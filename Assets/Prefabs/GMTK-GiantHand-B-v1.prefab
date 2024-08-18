@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1703191825776440616}
   - component: {fileID: 7375655728685571654}
   - component: {fileID: 7870301931308195246}
+  - component: {fileID: 5696415464371426520}
   m_Layer: 0
   m_Name: GMTK-GiantHand-B-v1
   m_TagString: Untagged
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 11, y: 2.73}
-  startPosition: {x: 0, y: 0}
+  originalPosition: {x: 0, y: 0}
   oneWayMovementDuration: 3
 --- !u!212 &7870301931308195246
 SpriteRenderer:
@@ -132,3 +133,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &5696415464371426520
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990270331508615169}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.63, y: -3.22}
+  serializedVersion: 2
+  m_Radius: 0.16
