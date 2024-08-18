@@ -7,8 +7,8 @@ public class TurnInStation : InteractionStation
     [SerializeField] private GameObject[] spawnableHands;
     [SerializeField] public Vector2 spawnPosition;
     protected override void OnInteractionComplete(Crumb crumb){
-        crumb.OnCooked();
-        Debug.Log(crumb.crumbName + " is cooked in the oven!");
+        crumb.OnTurnIn();
+        Debug.Log(crumb.crumbName + " has been turned in!");
     }
 
     protected override void OnInteractionStart(Crumb crumb){

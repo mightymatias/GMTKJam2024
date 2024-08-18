@@ -53,5 +53,9 @@ public abstract class Crumb : MonoBehaviour
             Debug.LogError(crumbName + " does not have a skewered version assigned!");
         }
     }
+
+    public virtual void OnTurnIn(){
+
+    }
         
 }
