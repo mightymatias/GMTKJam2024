@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class Line : MonoBehaviour
 {
@@ -37,7 +37,7 @@ public class Line : MonoBehaviour
             Vector2 lastPoint = points.Last();
             Vector2 direction = (position - lastPoint).normalized;
             float distance = Vector2.Distance(lastPoint, position);
-            int interpolationSteps = Mathf.CeilToInt(distance / Smoothness); 
+            int interpolationSteps = Mathf.CeilToInt(distance / Smoothness);
 
             totalDistance += distance;
 
@@ -60,6 +60,4 @@ public class Line : MonoBehaviour
     {
         return totalDistance;
     }
-
 }
-
