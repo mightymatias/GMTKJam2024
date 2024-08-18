@@ -20,10 +20,13 @@ public abstract class InteractionStation : MonoBehaviour
     }
 
     protected virtual IEnumerator InteractionCoroutine(Crumb crumb){
+        OnInteractionStart(crumb);
         Debug.Log("Interacting with " + crumb.crumbName);
         yield return new WaitForSeconds(interactionTime);
         OnInteractionComplete(crumb);
     }
+
+    protected abstract void OnInteractionStart(Crumb crumb);
 
     protected abstract void OnInteractionComplete(Crumb crumb);
 

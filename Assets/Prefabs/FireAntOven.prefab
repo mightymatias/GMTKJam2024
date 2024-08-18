@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 590172409192011136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.48, y: -0.49, z: 0}
+  m_LocalPosition: {x: -1.18, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4557518271958405129}
   - component: {fileID: 4920854708372874295}
   - component: {fileID: 1068149270255870432}
+  - component: {fileID: 6523523784788132854}
   m_Layer: 29
   m_Name: FireAntOven
   m_TagString: Untagged
@@ -80,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionTime: 3
+  animator: {fileID: 6523523784788132854}
 --- !u!212 &4920854708372874295
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: -844374541
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c268de747fb640d3a131472211ad3fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d39d95e94518f419abb79d81e8535ab1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,20 +169,41 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.0617404, y: -0.7168782}
-  - {x: -0.9600161, y: -0.6671157}
-  - {x: -0.9008964, y: -0.5426533}
-  - {x: -0.7667352, y: -0.4456644}
-  - {x: -0.98742026, y: -0.30487084}
-  - {x: -0.9003427, y: -0.10225892}
-  - {x: -0.5788182, y: -0.32253408}
-  - {x: -0.24882448, y: -0.15764141}
-  - {x: 0.11159611, y: -0.14784288}
-  - {x: 0.95824957, y: -0.31158948}
+  - {x: -0.7361636, y: -0.8835423}
+  - {x: -0.64219105, y: -0.74075794}
+  - {x: -0.54043627, y: -0.69381404}
+  - {x: -0.34038448, y: -0.45729208}
+  - {x: -0.52231044, y: -0.3397541}
+  - {x: -0.43910885, y: -0.1255145}
+  - {x: -0.2377376, y: -0.20625663}
+  - {x: 0.07287645, y: -0.12663388}
+  - {x: 0.8208885, y: -0.2486167}
+  - {x: 1.442739, y: -0.43561864}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!95 &6523523784788132854
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302678013004566232}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e09ef1085d10b4ec69e87764c8c72d42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7914669862058265300
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 7914669862058265300}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.48, y: -0.712, z: 0}
+  m_LocalPosition: {x: -1.178, y: -0.729, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

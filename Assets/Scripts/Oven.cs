@@ -5,9 +5,17 @@ using UnityEngine;
 public class Oven : InteractionStation
 {
 
+    public Animator animator; //this connects the animator so it knows when to play what animation
+
+    protected override void OnInteractionStart(Crumb crumb)
+    {
+        animator.SetFloat("AnimFire", 1);
+    }
+
     protected override void OnInteractionComplete(Crumb crumb){
         crumb.OnCooked();
         Debug.Log(crumb.crumbName + " is cooked in the oven!");
+        animator.SetFloat("AnimFire", 0);
     }
 
     public override bool CanInteractWithCrumb(Crumb crumb){

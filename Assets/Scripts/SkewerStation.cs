@@ -5,6 +5,12 @@ using UnityEngine;
 public class SkewerStation : InteractionStation
 {
 
+    protected override void OnInteractionStart(Crumb crumb)
+    {
+        throw new System.NotImplementedException();
+    }
+
+
     protected override void OnInteractionComplete(Crumb crumb){
         crumb.OnSkewer();
         Debug.Log(crumb.crumbName + " is skewered on the skewer station!");

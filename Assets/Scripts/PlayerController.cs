@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private GameObject heldObject, nearbyCrumb; // used for interactions
     private Transform heldObjectOGParent; // remembering the original parent for the held object so we can set it when the object is set down
 
+    public Animator animator; //this connects the animator so it knows when to play what animation
+
     void Start(){
         rb = GetComponent<Rigidbody2D>();
     }
@@ -44,8 +46,20 @@ public class PlayerController : MonoBehaviour
         UnityEngine.Vector2 movedir = new UnityEngine.Vector2(speedX, speedY).normalized;
         rb.velocity = movedir * moveSpeed;
 
+        animator.SetFloat("AnimSpeedX", Mathf.Abs(speedX));
+        animator.SetFloat("AnimSpeedY", Mathf.Abs(speedY)); //both of these lines should tell the animator parameter to change to the speed value, thus initiating the 'walk' animation
+
+        if (speedX > 0)
+        {
+            gameObject.transform.localScale = new UnityEngine.Vector3(1, 1, 1);
+        }
+        else if (speedX < 0)
+        {
+            gameObject.transform.localScale = new UnityEngine.Vector3(-1, 1, 1);
+        }
+
         //Debug.Log("inRange?: " + isInRange + " Held Object: " + heldObject);
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other) {

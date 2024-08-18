@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6784656790059493803}
   - component: {fileID: 558718124125691246}
   - component: {fileID: 4472989221737310057}
+  - component: {fileID: 3757296780892251392}
   m_Layer: 6
   m_Name: Main character
   m_TagString: Player
@@ -101,7 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  interactionRange: 2
+  interactionRange: 0.8
+  animator: {fileID: 3757296780892251392}
 --- !u!50 &558718124125691246
 Rigidbody2D:
   serializedVersion: 4
@@ -318,6 +320,27 @@ PolygonCollider2D:
       - {x: 0.24718356, y: -0.14640057}
       - {x: 0.2115047, y: -0.20244038}
   m_UseDelaunayMesh: 0
+--- !u!95 &3757296780892251392
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861081709851268864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9736c334447ce4517b0f59435fc1a79c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6239475827220132811
 GameObject:
   m_ObjectHideFlags: 0

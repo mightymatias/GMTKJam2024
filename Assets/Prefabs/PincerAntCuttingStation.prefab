@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5938306308119299980}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Interact Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2153747304817132564}
   - component: {fileID: 4908051265644795412}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,8 @@ GameObject:
   - component: {fileID: 1316789750479450086}
   - component: {fileID: 8519418696636493237}
   - component: {fileID: 1358277871753434085}
-  m_Layer: 0
+  - component: {fileID: 4579763551378737799}
+  m_Layer: 29
   m_Name: PincerAntCuttingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionTime: 5
+  animator: {fileID: 4579763551378737799}
 --- !u!212 &8519418696636493237
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -204,8 +206,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -844374541
   m_SortingLayer: 2
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 9a9a76bd82fcb4f40b17da82aee9e7cc, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d77d8c7cd1ffb4c5ebe12555aeb37331, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -251,10 +253,40 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.07704, y: 0.13899088}
-  - {x: 0.49592972, y: -0.5661795}
-  - {x: 1.8619301, y: -0.28615737}
+  - {x: -1.1126034, y: -0.0032612085}
+  - {x: 0.42480373, y: -0.69420636}
+  - {x: 1.7596097, y: -0.39279795}
+  - {x: 1.755775, y: -0.0683409}
+  - {x: 1.5308104, y: -0.086924076}
+  - {x: 1.4943213, y: -0.04256046}
+  - {x: 1.3421469, y: -0.063040614}
+  - {x: 0.8039918, y: -0.1381284}
+  - {x: 0.5317521, y: -0.15005362}
+  - {x: 0.15529394, y: -0.12983954}
+  - {x: -0.17303658, y: -0.06779301}
+  - {x: -1.1253622, y: 0.048134923}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!95 &4579763551378737799
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913724139831682669}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a3c3dd4f4a364a39b44385dc341c0da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
