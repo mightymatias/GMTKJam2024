@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookedVersion: {fileID: 0}
-  cutVersion: {fileID: 0}
+  cutVersion: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
   skeweredVersion: {fileID: 0}
   crumbName: 
 --- !u!212 &8947976485234984586

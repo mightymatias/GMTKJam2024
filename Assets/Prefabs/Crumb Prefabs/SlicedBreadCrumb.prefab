@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000539f4f76f88a44a5572aa3d5dee97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookedVersion: {fileID: 0}
+  cookedVersion: {fileID: 2431499860459737358, guid: 6fe3235619fe31544b2f53ac8aff1493, type: 3}
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   crumbName: 
