@@ -7,7 +7,8 @@ public class CheesePorkBurgerCrumb : Crumb
     // Start is called before the first frame update
     void Start()
     {
-        crumbName = "Cheese Porkbuger Crumb";        
+        crumbName = "Cheese Porkbuger Crumb"; 
+        //isFInalProduct = true;      
     }
 
     public override void OnPickUp(){

@@ -7,7 +7,8 @@ public class CookedHamCrumb : Crumb
     // Start is called before the first frame update
     void Start()
     {
-        crumbName = "Cooked Ham Crumb";        
+        crumbName = "Cooked Ham Crumb"; 
+        isFinalProduct = true;       
     }
 
     public override void OnPickUp(){

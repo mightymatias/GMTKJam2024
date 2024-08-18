@@ -7,7 +7,8 @@ public class ToastCrumb : Crumb
     // Start is called before the first frame update
     void Start()
     {
-        crumbName = "Toast Crumb";        
+        crumbName = "Toast Crumb";      
+        isFinalProduct = true;  
     }
 
     public override void OnPickUp(){
