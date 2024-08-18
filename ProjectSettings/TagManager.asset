@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Newly Spawned Crumb
   - Crumbs
   - Character
   - 
@@ -51,9 +51,15 @@ TagManager:
   - name: Character
     uniqueID: 4225274795
     locked: 0
+  - name: Foreground
+    uniqueID: 2069847459
+    locked: 0
+  - name: StrawBG
+    uniqueID: 3647191005
+    locked: 0
   - name: Crumbs
     uniqueID: 310436037
     locked: 0
-  - name: Foreground
-    uniqueID: 2069847459
+  - name: Straw
+    uniqueID: 434033663
     locked: 0
