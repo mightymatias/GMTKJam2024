@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurnInStation : InteractionStation
 {
+    [SerializeField] private GameObject[] spawnableHands;
+    [SerializeField] public Vector2 spawnPosition;
     protected override void OnInteractionComplete(Crumb crumb){
         crumb.OnCooked();
         Debug.Log(crumb.crumbName + " is cooked in the oven!");
@@ -11,6 +13,8 @@ public class TurnInStation : InteractionStation
 
     protected override void OnInteractionStart(Crumb crumb){
         Debug.Log(crumb.crumbName + " has started interaction");
+        SpawnObject();
+        //spawn a hand
     }
 
     public override bool CanInteractWithCrumb(Crumb crumb){
@@ -26,5 +30,18 @@ public class TurnInStation : InteractionStation
     void Update()
     {
         
+    }
+
+    void SpawnObject(){
+        if (spawnableHands != null){
+            // Get a random hand
+            System.Random random = new System.Random();
+            int randomIndex = random.Next(spawnableHands.Length);
+            GameObject spawnObject = spawnableHands[randomIndex];
+            // Hand Spawn position
+
+            // Spawn the hand
+            GameObject newObject = Instantiate(spawnObject, spawnPosition, Quaternion.identity);
+        }
     }
 }
