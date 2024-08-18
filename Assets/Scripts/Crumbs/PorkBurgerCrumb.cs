@@ -8,6 +8,7 @@ public class PorkBurgerCrumb : Crumb
     void Start()
     {
         crumbName = "Porkburger Crumb";        
+        //isFinalProduct = true;
     }
 
     public override void OnPickUp(){

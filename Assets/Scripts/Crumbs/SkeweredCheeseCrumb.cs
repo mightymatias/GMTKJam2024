@@ -7,7 +7,8 @@ public class SkeweredCheeseCrumb : Crumb
     // Start is called before the first frame update
     void Start()
     {
-        crumbName = "Skewered Cheese Crumb";        
+        crumbName = "Skewered Cheese Crumb";  
+        isFinalProduct = true;      
     }
 
     public override void OnPickUp(){

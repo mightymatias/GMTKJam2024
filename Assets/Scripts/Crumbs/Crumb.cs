@@ -7,7 +7,8 @@ public abstract class Crumb : MonoBehaviour
 
     public GameObject cookedVersion; //Reference to the cooked version of the crumb
     public GameObject cutVersion; //Reference to the cut version of the crumb
-    public GameObject skeweredVersion; //Reference to the skewered version of the crumb
+    public GameObject skeweredVersion; //Reference to the skewered version of the crumb 
+    public bool isFinalProduct = false;
     public string crumbName; //Name of the crumb
 
     // Start is called before the first frame update
