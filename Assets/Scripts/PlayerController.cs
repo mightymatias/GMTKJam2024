@@ -7,7 +7,7 @@ using UnityEngine.Scripting.APIUpdating;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f; // speed of character, set in editor
-    [SerializeField] private float interactionRange = 1000f; // range of player interactions
+    [SerializeField] private float interactionRange = 10f; // range of player interactions
     private bool isInRange; // range for detecting crumbs
     private bool isInteractReleased = true; //required to avoid double inputs
     private float speedX, speedY; // speed variables for moving
