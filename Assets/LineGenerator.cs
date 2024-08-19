@@ -7,7 +7,9 @@ public class LineGenerator : MonoBehaviour
     public GameObject canvasObject;
     public GameObject leftObject; // Object that controls canvas movement
     public GameObject nestObject; // The nest from where the lines originate
-    public float snapRadius = 0.75f; // Radius for snapping
+    public float snapRadius = 0.5f; // Radius for snapping
+    public Color normalLineColor = Color.black; // Normal color of the line
+    public Color outOfInkColor = Color.red; // Color of the line when out of ink
 
     Line activeLine;
     public List<Line> allLines = new List<Line>();
@@ -56,6 +58,10 @@ public class LineGenerator : MonoBehaviour
                 GameObject newLine = Instantiate(linePrefab, canvasObject.transform);
                 activeLine = newLine.GetComponent<Line>();
                 allLines.Add(activeLine);
+
+                // Set the initial color of the line
+                SetLineColor(normalLineColor);
+
                 activeLine.UpdateLine(nestObject.transform.position); // Start line at nest
             }
         }
@@ -93,7 +99,20 @@ public class LineGenerator : MonoBehaviour
                 mousePos = snappedObject.transform.position;
             }
 
-            activeLine.UpdateLine(mousePos);
+            float addedDistance = activeLine.UpdateLine(mousePos);
+
+            // Predict the total distance that will be used
+            float potentialTotalDistance = activeLine.GetTotalDistance() + addedDistance;
+
+            // Update the line color if the ink will run out
+            if (potentialTotalDistance > currentInk)
+            {
+                SetLineColor(outOfInkColor);
+            }
+            else
+            {
+                SetLineColor(normalLineColor);
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -153,7 +172,7 @@ public class LineGenerator : MonoBehaviour
     {
         if (allLines.Count > 0)
         {
-            DeleteLine(allLines[0]);
+            DeleteLine(allLines[allLines.Count - 1]);
         }
     }
 
@@ -169,5 +188,20 @@ public class LineGenerator : MonoBehaviour
         currentInk += lengthOfLine;
         currentInk = Mathf.Min(currentInk, maxInk); // Ensure ink does not exceed max
         Debug.Log($"Ink refunded. Current Ink: {currentInk}");
+    }
+
+    void SetLineColor(Color color)
+    {
+        if (activeLine != null)
+        {
+            LineRenderer lineRenderer = activeLine.GetComponent<LineRenderer>();
+            lineRenderer.startColor = color;
+            lineRenderer.endColor = color;
+        }
+    }
+
+    public bool IsDrawingLine()
+    {
+        return activeLine != null;
     }
 }

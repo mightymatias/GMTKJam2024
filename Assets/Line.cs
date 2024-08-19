@@ -19,19 +19,27 @@ public class Line : MonoBehaviour
 
     void Start()
     {
-        lineRenderer.startWidth = StartingWidth; // Example width
-        lineRenderer.endWidth = EndingWidth; // Example width
-        lineRenderer.numCapVertices = NumCapVertices; // Rounds the edges
+        // Set the tag to "Line"
+        gameObject.tag = "Line";
+
+        // Set up the LineRenderer properties
+        lineRenderer.startWidth = StartingWidth;
+        lineRenderer.endWidth = EndingWidth;
+        lineRenderer.numCapVertices = NumCapVertices;
+        lineRenderer.sortingLayerName = "Foreground";
     }
 
-    public void UpdateLine(Vector2 position)
+    public float UpdateLine(Vector2 position)
     {
+        float distanceAdded = 0f;
+
         if (points == null)
         {
             points = new List<Vector2>();
             SetPoint(position);
-            return;
+            return 0f;
         }
+
         if (Vector2.Distance(points.Last(), position) > .05f)
         {
             Vector2 lastPoint = points.Last();
@@ -40,20 +48,25 @@ public class Line : MonoBehaviour
             int interpolationSteps = Mathf.CeilToInt(distance / Smoothness);
 
             totalDistance += distance;
+            distanceAdded = distance;
 
             for (int i = 1; i <= interpolationSteps; i++)
             {
                 SetPoint(lastPoint + direction * (0.05f * i));
             }
         }
+
+        return distanceAdded;
     }
 
     void SetPoint(Vector2 point)
     {
         points.Add(point);
 
+        // Force Z to be in front of other objects
+        Vector3 pointWithZ = new Vector3(point.x, point.y, -1f); // Adjust -1f if necessary
         lineRenderer.positionCount = points.Count;
-        lineRenderer.SetPosition(points.Count - 1, point);
+        lineRenderer.SetPosition(points.Count - 1, pointWithZ);
     }
 
     public float GetTotalDistance()
