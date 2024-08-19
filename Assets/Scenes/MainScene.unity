@@ -2741,14 +2741,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CookedHamCrumb
       objectReference: {fileID: 0}
-    - target: {fileID: 5929273344577077814, guid: b2e1e8ca5d660f24c89228697103f291, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929273344577077814, guid: b2e1e8ca5d660f24c89228697103f291, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2819,14 +2811,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2119858737615436606, guid: 91f7e245299af4e45b682fdbac4cdfbf, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2119858737615436606, guid: 91f7e245299af4e45b682fdbac4cdfbf, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 2486666395735429313, guid: 91f7e245299af4e45b682fdbac4cdfbf, type: 3}
       propertyPath: m_Name
       value: HamCrumb
@@ -2941,10 +2925,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1707560641942123270, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
       propertyPath: m_Name
       value: SlicedBreadCrumb
@@ -3102,14 +3082,6 @@ PrefabInstance:
     - target: {fileID: 2431499860459737358, guid: 6fe3235619fe31544b2f53ac8aff1493, type: 3}
       propertyPath: m_Name
       value: Toast
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178937299957942548, guid: 6fe3235619fe31544b2f53ac8aff1493, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178937299957942548, guid: 6fe3235619fe31544b2f53ac8aff1493, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3392,18 +3364,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3974047405653817250, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
-      propertyPath: cutVersion
-      value: 
-      objectReference: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
-    - target: {fileID: 3974047405653817250, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974047405653817250, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4109236822028810062, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
       propertyPath: m_Name
       value: BreadCrumb
@@ -3421,6 +3381,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 5270102811059594408, guid: b66e034e655b53d4c9417b16c17fb47c, type: 3}
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 2045518410721689784, guid: 909f28501619f7b44bc9f5d3ba5383e6, type: 3}
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 1198707366688718703, guid: 817560a76b228444286f66efdfbe6a55, type: 3}
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.data[3]
+      value: 
+      objectReference: {fileID: 304574290040480490, guid: 7cd5b998793032f478907dff2fbb3ecb, type: 3}
+    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
+      propertyPath: interactionPossibilities.Array.data[4]
+      value: 
+      objectReference: {fileID: 1354435383905212049, guid: db862f05428d7b74da23d840e4ec17d1, type: 3}
     - target: {fileID: 6751219686060443165, guid: 736fc83773d180e43ad099d427c02876, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.01
@@ -3478,14 +3462,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3900282544968163269, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900282544968163269, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 5117888380754689119, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.74
@@ -3603,14 +3579,6 @@ PrefabInstance:
     - target: {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
       propertyPath: m_Name
       value: CheeseCrumb
-      objectReference: {fileID: 0}
-    - target: {fileID: 5876454076291513709, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
-      propertyPath: combinationTier.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5876454076291513709, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
-      propertyPath: combinationTier.Array.data[0]
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7234870284356951940, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
       propertyPath: m_LocalPosition.x
