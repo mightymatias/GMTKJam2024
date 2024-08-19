@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
@@ -9,12 +10,13 @@ public class OrderManager : MonoBehaviour
     public int currentOrderCount = 0;
     public int maxOrderCount = 5;
     public List<GameObject> currentOrders;
-    public float timeBetweenOrderSpawn = 10f;
+    public float orderSpawnInterval = 5f;
     public GameObject orderCardPrefab;
-    public float orderShiftAmount = 1.5f;
+    public float orderShiftAmount = 100f;
+    public float orderSlideTime = 1;
 
     void Start(){
-
+        StartCoroutine(SpawnItems());
     }
 
     void Update(){
@@ -23,6 +25,19 @@ public class OrderManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.J)){
             DevDestroyOrder();
+        }
+    }
+
+    IEnumerator SpawnItems(){
+        while(true){
+            // If the max number of orders is reached, wait
+            while (currentOrders.Count >= maxOrderCount){
+                yield return null; // Wait for the next frame
+            }
+
+            // Create an order
+            NewOrder();
+            yield return new WaitForSeconds(orderSpawnInterval);
         }
     }
 
@@ -43,20 +58,19 @@ public class OrderManager : MonoBehaviour
     }
 
     public void NewOrder(){
-        /*-----Move all the other orders to the left-----*/
-        UnityEngine.Vector3 leftwardMove = new UnityEngine.Vector3(orderShiftAmount, 0);
-        foreach (GameObject orderCard in currentOrders){
-            orderCard.transform.position += leftwardMove;
-        }
 
         /*----------Get a random recipe to cook----------*/
 
         Recipe randomRecipe = GetRandomOrder();
 
         /*-----------Create a new order prefab-----------*/
+        GameObject canvasObject = GameObject.Find("Canvas");
+        UnityEngine.Vector2 spawnPoint = new UnityEngine.Vector2(-1050,436);
+        GameObject newOrderCard = Instantiate(orderCardPrefab, transform.position, UnityEngine.Quaternion.identity);
+        newOrderCard.transform.SetParent(canvasObject.transform);
+        RectTransform newOrderCardRectTransform = newOrderCard.GetComponent<RectTransform>();
+        newOrderCardRectTransform.anchoredPosition = spawnPoint;
 
-        // TODO: FIGURE OUT WHERE THESE ARE GOING ON THE UI AND HOW TO MAKE THEM PUSH EACH OTHER
-        GameObject newOrderCard = Instantiate(orderCardPrefab, transform.position, Quaternion.identity);
 
         /*------------Set up the order prefab------------*/
 
@@ -82,6 +96,10 @@ public class OrderManager : MonoBehaviour
 
         currentOrders.Add(newOrderCard);
         currentOrderCount++;
+
+        /*-----Move all orders to the left-----*/
+        SlideOrderTickets();
+
     }
 
     public void DestroyOrder(GameObject product){
@@ -97,10 +115,35 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    public void SlideOrderTickets(){
+        UnityEngine.Vector3 rightwardMove = new UnityEngine.Vector3(orderShiftAmount, 0, 0);
+        foreach (GameObject orderCard in currentOrders){
+            RectTransform orderCardRectTransform = orderCard.GetComponent<RectTransform>();
+            UnityEngine.Vector2 targetPosition = orderCardRectTransform.localPosition + rightwardMove;
+            StartCoroutine(ActualSlide(targetPosition, orderSlideTime, orderCardRectTransform));
+        }
+        
+    }
+
+    IEnumerator ActualSlide(UnityEngine.Vector2 targetPosition, float duration, RectTransform orderCardRectTransform){
+        UnityEngine.Vector2 startPosition = orderCardRectTransform.localPosition;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration){
+            orderCardRectTransform.localPosition = UnityEngine.Vector2.Lerp(startPosition, targetPosition, elapsedTime/duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        orderCardRectTransform.localPosition = targetPosition;
+    }
+
     public void DevDestroyOrder(){
         Destroy(currentOrders[0]);
         currentOrders.RemoveAt(0);
         currentOrderCount--;
     }
+
+    
 
 }
