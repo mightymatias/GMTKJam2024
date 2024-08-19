@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2216293717104356563}
   - component: {fileID: 9178937299957942548}
+  - component: {fileID: 5554340514295344731}
   - component: {fileID: 835835516804274093}
   - component: {fileID: 3701099456591042062}
   - component: {fileID: 8396668848737152918}
@@ -54,6 +55,22 @@ MonoBehaviour:
   skeweredVersion: {fileID: 0}
   isFinalProduct: 1
   crumbName: Toast Crumb
+--- !u!114 &5554340514295344731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431499860459737358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584f0e78615653e41ae44506a3e12b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  product: {fileID: 2431499860459737358}
+  ingredients:
+  - {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
+  allotedTimeToCook: 45
 --- !u!212 &835835516804274093
 SpriteRenderer:
   m_ObjectHideFlags: 0
