@@ -58,11 +58,8 @@ public class OrderManager : MonoBehaviour
     }
 
     public void NewOrder(){
-
         /*----------Get a random recipe to cook----------*/
-
         Recipe randomRecipe = GetRandomOrder();
-
         /*-----------Create a new order prefab-----------*/
         GameObject canvasObject = GameObject.Find("Canvas");
         UnityEngine.Vector2 spawnPoint = new UnityEngine.Vector2(-1050,436);
@@ -70,10 +67,7 @@ public class OrderManager : MonoBehaviour
         newOrderCard.transform.SetParent(canvasObject.transform);
         RectTransform newOrderCardRectTransform = newOrderCard.GetComponent<RectTransform>();
         newOrderCardRectTransform.anchoredPosition = spawnPoint;
-
-
         /*------------Set up the order prefab------------*/
-
         // Set the sprite of the final product
         newOrderCard.transform.Find("Final Product").GetComponent<SpriteRenderer>().sprite = randomRecipe.product.GetComponent<SpriteRenderer>().sprite;
         // Getting references to the ingredient panels
@@ -91,15 +85,11 @@ public class OrderManager : MonoBehaviour
             cardIngredients[i].GetComponent<SpriteRenderer>().sprite = ingredient.GetComponent<SpriteRenderer>().sprite;
             i++;
         }
-
         /*---Add the order prefab to the array of orders---*/
-
         currentOrders.Add(newOrderCard);
         currentOrderCount++;
-
         /*-----Move all orders to the left-----*/
         SlideOrderTickets();
-
     }
 
     public void DestroyOrder(GameObject product){
