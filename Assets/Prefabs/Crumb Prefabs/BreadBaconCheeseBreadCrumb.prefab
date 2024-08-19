@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8237832435098270843}
   - component: {fileID: 304574290040480490}
+  - component: {fileID: 2913349537430579956}
   - component: {fileID: 3689486915686600125}
   - component: {fileID: 3675389054943212064}
   - component: {fileID: 8729337076500279598}
@@ -56,6 +57,25 @@ MonoBehaviour:
   crumbName: Bread Bacon Cheese Bread Crumb
   ingredient1: {fileID: 7937520300380789772, guid: 817560a76b228444286f66efdfbe6a55, type: 3}
   ingredient2: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
+--- !u!114 &2913349537430579956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483210443379952778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584f0e78615653e41ae44506a3e12b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  product: {fileID: 6483210443379952778}
+  ingredients:
+  - {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
+  - {fileID: 3068034968002755549, guid: b2e1e8ca5d660f24c89228697103f291, type: 3}
+  - {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
+  - {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
+  allotedTimeToCook: 120
 --- !u!212 &3689486915686600125
 SpriteRenderer:
   m_ObjectHideFlags: 0

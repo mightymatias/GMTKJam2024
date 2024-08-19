@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7433224347546775998}
   - component: {fileID: 5270102811059594408}
+  - component: {fileID: 5977764376175972791}
   - component: {fileID: 2305427196246025595}
   - component: {fileID: 6393552347812871636}
   - component: {fileID: 827514442694274857}
@@ -56,6 +57,23 @@ MonoBehaviour:
   crumbName: Nachos Crumb
   ingredient1: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
   ingredient2: {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
+--- !u!114 &5977764376175972791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189137415002511852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584f0e78615653e41ae44506a3e12b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  product: {fileID: 8189137415002511852}
+  ingredients:
+  - {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
+  - {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
+  allotedTimeToCook: 60
 --- !u!212 &2305427196246025595
 SpriteRenderer:
   m_ObjectHideFlags: 0
