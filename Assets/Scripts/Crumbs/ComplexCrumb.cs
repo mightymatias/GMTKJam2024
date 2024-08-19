@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlicedBreadCrumb : Crumb
+public abstract class ComplexCrumb : Crumb
 {
+    public GameObject ingredient1;
+    public GameObject ingredient2;
     // Start is called before the first frame update
     void Start()
     {
-        crumbName = "Sliced Bread Crumb";    
-            
-    }
-
-    public override void OnPickUp(){
-        Debug.Log(crumbName + " picked up!");
+               
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void onCombine(){
+
     }
 }

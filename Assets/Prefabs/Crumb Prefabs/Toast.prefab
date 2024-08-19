@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd5f2d968f027145abb8f72fa42c3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combinationTiers: 
   cookedVersion: {fileID: 0}
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}

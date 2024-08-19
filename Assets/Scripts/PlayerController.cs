@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Crumb")){
             isInRange = true;
             nearbyCrumb = other.gameObject;
-            Debug.Log("Player in Range");
         }
     }
 
@@ -74,12 +73,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Crumb")){
             isInRange = false;
             nearbyCrumb = null;
-            Debug.Log("Player out of Range");
         }
     }
 
     void PickUp(){
-        Debug.Log("Entered pickup");
         //Logic for what happens on pickup
         heldObject = nearbyCrumb;
         nearbyCrumb = null;
@@ -88,27 +85,20 @@ public class PlayerController : MonoBehaviour
         heldObject.transform.position = transform.Find("Hold Point").position;
         heldObject.GetComponent<Rigidbody2D>().isKinematic = true;
         heldObject.GetComponent<Rigidbody2D>().simulated = false;
-        Debug.Log("Picked up Object");
     }
 
     void Drop(){
-        Debug.Log("Entered drop");
         // Detect nearby interaction stations
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
-        Debug.Log("Nearby colliders: " + colliders.Length + " They are: " + colliders);
 
         InteractionStation station = null;
         float closestStationDistance = Mathf.Infinity;
         InteractionStation closestStation = null;
 
-        Debug.Log("Searching for station");
         // Loop through all the colliders to find the closest station
-        Debug.Log("Nearby colliders: " + colliders.Length + " They are: ");
         foreach(Collider2D collider in colliders){
-            Debug.Log("Collider: " + collider);
             station = collider.GetComponent<InteractionStation>(); // Only look deeper into this if the collider belongs to an interaction station
             if (station != null){ // If station exists
-                Debug.Log("Found a station");
                 float distanceToStation = UnityEngine.Vector2.Distance(transform.position, station.transform.position); // Distance to the station 
                 if (distanceToStation < closestStationDistance){ // If this station is the new closest one
                     closestStationDistance = distanceToStation; // Set it to be the closest one
@@ -140,7 +130,6 @@ public class PlayerController : MonoBehaviour
             heldObject.GetComponent<Rigidbody2D>().isKinematic = false;
             heldObject.GetComponent<Rigidbody2D>().simulated = true;
             heldObject = null;
-            Debug.Log("Dropped object");
         }
     }
 }

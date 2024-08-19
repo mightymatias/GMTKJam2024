@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Crumb : MonoBehaviour
 {
-
+    [SerializeField] public int[] combinationTiers;
     public GameObject cookedVersion; //Reference to the cooked version of the crumb
     public GameObject cutVersion; //Reference to the cut version of the crumb
     public GameObject skeweredVersion; //Reference to the skewered version of the crumb 
@@ -56,6 +56,10 @@ public abstract class Crumb : MonoBehaviour
 
     public virtual void OnTurnIn(){
 
+    }
+
+    public virtual void OnPlace(){
+        
     }
         
 }

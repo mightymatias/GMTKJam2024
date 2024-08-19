@@ -48,9 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e46b50eda1dd8f4c940019f4a66aa6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combinationTiers: 
   cookedVersion: {fileID: 3068034968002755549, guid: b2e1e8ca5d660f24c89228697103f291, type: 3}
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
+  isFinalProduct: 0
   crumbName: 
 --- !u!212 &2519414740664987820
 SpriteRenderer:
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 310436037
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1892235486, guid: ce5f1d72be1a14a54bcf0f7680cd85f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
