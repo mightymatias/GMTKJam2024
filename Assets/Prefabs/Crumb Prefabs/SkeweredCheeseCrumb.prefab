@@ -72,7 +72,7 @@ MonoBehaviour:
   product: {fileID: 9179438871129956876}
   ingredients:
   - {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
-  allotedTimeToCook: 0
+  allotedTimeToCook: 45
 --- !u!212 &1453390661075067973
 SpriteRenderer:
   m_ObjectHideFlags: 0
