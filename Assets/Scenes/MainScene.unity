@@ -2423,9 +2423,10 @@ MonoBehaviour:
   currentOrderCount: 0
   maxOrderCount: 5
   currentOrders: []
-  timeBetweenOrderSpawn: 10
+  orderSpawnInterval: 10
   orderCardPrefab: {fileID: 6147598782448536139, guid: 7c5219a1f6d95ad4abac8b9c9b7d4101, type: 3}
-  orderShiftAmount: 1.5
+  orderShiftAmount: 100
+  orderSlideTime: 0.5
 --- !u!1 &1760772822
 GameObject:
   m_ObjectHideFlags: 0
