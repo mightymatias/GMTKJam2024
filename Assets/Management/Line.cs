@@ -8,7 +8,7 @@ public class Line : MonoBehaviour
     public LineRenderer lineRenderer;
 
     List<Vector2> points;
-
+    
     public float Smoothness = .2f;
 
     public float StartingWidth = .1f;

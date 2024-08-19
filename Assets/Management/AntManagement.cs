@@ -5,6 +5,7 @@ public class AntManagement : MonoBehaviour
 {
     public int totalNPCWorkers = 10;
     public DynamicTimerController dynamicTimerController;
+    public UIManager uiManager; // Reference to UIManager
 
     private Dictionary<string, Job> jobs = new Dictionary<string, Job>();
 
@@ -15,6 +16,13 @@ public class AntManagement : MonoBehaviour
         public float timePerWorker;
         public float timeRemaining;
         public Timer timer;
+    }
+
+    void Start()
+    {
+        // Initialize the UI with the total number of workers
+        uiManager.SetTotalWorkers(totalNPCWorkers);
+        uiManager.SetActiveWorkers(0); // No workers are active initially
     }
 
     public void AssignWorkersToJob(
@@ -31,6 +39,8 @@ public class AntManagement : MonoBehaviour
         }
 
         totalNPCWorkers -= numberOfWorkers;
+        uiManager.SetTotalWorkers(totalNPCWorkers); // Update the total workers in the UI
+        uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() + numberOfWorkers); // Update the active workers in the UI
 
         // Calculate total time based on number of workers
         float totalTime = timePerWorker / numberOfWorkers;
@@ -63,6 +73,8 @@ public class AntManagement : MonoBehaviour
             {
                 completedJobs.Add(jobName);
                 totalNPCWorkers += job.workersAssigned; // Return workers to the pool
+                uiManager.SetTotalWorkers(totalNPCWorkers); // Update total workers in the UI
+                uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - job.workersAssigned); // Update active workers in the UI
             }
         }
 
