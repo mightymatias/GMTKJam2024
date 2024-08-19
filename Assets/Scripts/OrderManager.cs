@@ -54,9 +54,15 @@ public class OrderManager : MonoBehaviour
         Recipe randomRecipe = GetRandomOrder();
 
         /*-----------Create a new order prefab-----------*/
+        GameObject canvasObject = GameObject.Find("Canvas");
 
         // TODO: FIGURE OUT WHERE THESE ARE GOING ON THE UI AND HOW TO MAKE THEM PUSH EACH OTHER
+        UnityEngine.Vector2 spawnPoint = new UnityEngine.Vector2(-850,436);
         GameObject newOrderCard = Instantiate(orderCardPrefab, transform.position, Quaternion.identity);
+        newOrderCard.transform.SetParent(canvasObject.transform);
+        RectTransform newOrderCardRectTransform = newOrderCard.GetComponent<RectTransform>();
+        newOrderCardRectTransform.anchoredPosition = spawnPoint;
+
 
         /*------------Set up the order prefab------------*/
 
