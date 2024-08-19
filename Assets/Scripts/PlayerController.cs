@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("AnimSpeedX", Mathf.Abs(speedX));
         animator.SetFloat("AnimSpeedY", Mathf.Abs(speedY)); //both of these lines should tell the animator parameter to change to the speed value, thus initiating the 'walk' animation
 
+        // this is turning our character left and right
         if (speedX > 0)
         {
             gameObject.transform.localScale = new UnityEngine.Vector3(1, 1, 1);

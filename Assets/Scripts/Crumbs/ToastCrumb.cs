@@ -8,16 +8,17 @@ public class ToastCrumb : Crumb
     void Start()
     {
         crumbName = "Toast Crumb";      
-        isFinalProduct = true;  
+        isFinalProduct = true;
     }
 
     public override void OnPickUp(){
         Debug.Log(crumbName + " picked up!");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+
     }
+
 }

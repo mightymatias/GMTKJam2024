@@ -7,7 +7,7 @@ public class SoundEffectsMainMenu : MonoBehaviour
 
     public AudioSource AudioSrc;
 
-    public AudioClip background1, sfx1, sfx2;
+    public AudioClip sfx1, sfx2;
 
     public void Button1() // to make the button emit sound when pressed
     {
@@ -23,10 +23,9 @@ public class SoundEffectsMainMenu : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start() //to make the background music start playing right when the game starts
+    void Start() 
     {
-        AudioSrc.clip = background1;
-        AudioSrc.Play();
+        
     }
 
     // Update is called once per frame

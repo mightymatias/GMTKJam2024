@@ -24,7 +24,7 @@ public class Oven : InteractionStation
     // Start is called before the first frame update
     void Start()
     {
-        
+        audsrc = GetComponent<AudioSource>(); // get the audio source
     }
 
     // Update is called once per frame
@@ -32,4 +32,13 @@ public class Oven : InteractionStation
     {
         
     }
+
+    public AudioSource audsrc; //audio source 
+
+    public void play_sound()
+    {
+        audsrc.Play(); //plays the sound effect in the animator!
+    }
+
+
 }
