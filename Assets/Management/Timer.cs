@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
@@ -35,6 +35,7 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
+                DisplayTime(timeRemaining); // Ensure the last update is shown
             }
         }
     }
@@ -47,6 +48,8 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.ForceMeshUpdate(); // Force update to ensure text is refreshed
+        Debug.Log($"Current Countdown Time: {minutes}, {seconds}");
     }
 
     public void SetSymbol(Sprite symbol)

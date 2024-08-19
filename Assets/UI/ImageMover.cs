@@ -1,9 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ImageMover
+    : MonoBehaviour,
+        IPointerClickHandler,
+        IPointerEnterHandler,
+        IPointerExitHandler
 {
     public Image img;
     public Canvas canvas;
@@ -34,10 +39,13 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             return;
         }
 
+        // If the left mouse button is clicked and the object is currently clicked
         if (Input.GetMouseButtonDown(0) && isClicked)
         {
+            // Check if the pointer is neither over the game object nor its children, and not over the canvas
             if (!IsPointerOverGameObjectAndChildren() && !IsPointerOverCanvas())
             {
+                // Only move back if the click was outside the target object and the canvas
                 MoveBackToOriginalPosition();
             }
         }
@@ -57,9 +65,14 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerExit(PointerEventData eventData)
     {
         // Check if the pointer is still over the image or any of its child elements
-        if (!RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, eventData.pressEventCamera))
+        if (
+            !RectTransformUtility.RectangleContainsScreenPoint(
+                rectTransform,
+                Input.mousePosition,
+                eventData.pressEventCamera
+            )
+        )
         {
-            // If not, return to the original position
             StopAllCoroutines();
             StartCoroutine(MoveToPosition(originalPosition));
             isHovered = false;
@@ -85,7 +98,11 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         while (elapsedTime < moveDuration)
         {
-            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / moveDuration);
+            rectTransform.anchoredPosition = Vector2.Lerp(
+                startPosition,
+                targetPosition,
+                elapsedTime / moveDuration
+            );
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -95,14 +112,33 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     private bool IsPointerOverGameObjectAndChildren()
     {
-        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, null);
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            rectTransform,
+            Input.mousePosition,
+            null
+        );
     }
 
     private bool IsPointerOverCanvas()
     {
         // Check if the pointer is over the canvas (used for line drawing)
-        RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
-        return RectTransformUtility.RectangleContainsScreenPoint(canvasRectTransform, Input.mousePosition, null);
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+
+        // Create a list to hold all the raycast results
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+        // Check if any of the raycast results are related to the canvas or its children
+        foreach (var result in raycastResults)
+        {
+            if (result.gameObject.transform.IsChildOf(canvas.transform))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void MoveBackToOriginalPosition()

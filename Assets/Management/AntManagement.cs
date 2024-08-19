@@ -6,6 +6,7 @@ public class AntManagement : MonoBehaviour
     public int totalNPCWorkers = 10;
     public DynamicTimerController dynamicTimerController;
     public UIManager uiManager; // Reference to UIManager
+    private int availableWorkers; // Field to track available workers
 
     private Dictionary<string, Job> jobs = new Dictionary<string, Job>();
 
@@ -20,8 +21,10 @@ public class AntManagement : MonoBehaviour
 
     void Start()
     {
-        // Initialize the UI with the total number of workers
-        uiManager.SetTotalWorkers(totalNPCWorkers);
+        // Set the initial total workers and the available workers
+        uiManager.SetInitialTotalWorkers(totalNPCWorkers);
+        availableWorkers = totalNPCWorkers;
+
         uiManager.SetActiveWorkers(0); // No workers are active initially
     }
 
@@ -32,14 +35,13 @@ public class AntManagement : MonoBehaviour
         Sprite symbol
     )
     {
-        if (numberOfWorkers > totalNPCWorkers)
+        if (numberOfWorkers > availableWorkers)
         {
             Debug.LogError("Not enough workers to assign to the job.");
             return;
         }
 
-        totalNPCWorkers -= numberOfWorkers;
-        uiManager.SetTotalWorkers(totalNPCWorkers); // Update the total workers in the UI
+        availableWorkers -= numberOfWorkers;
         uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() + numberOfWorkers); // Update the active workers in the UI
 
         // Calculate total time based on number of workers
@@ -47,7 +49,7 @@ public class AntManagement : MonoBehaviour
 
         // Create and configure the timer using CreateAndConfigureTimer from DynamicTimerController
         Timer jobTimer = dynamicTimerController.CreateAndConfigureTimer(totalTime, symbol);
-
+        
         // Create and store the job in the dictionary
         Job newJob = new Job
         {
@@ -61,28 +63,37 @@ public class AntManagement : MonoBehaviour
 
     void Update()
     {
+        int workersToRelease = 0;
         List<string> completedJobs = new List<string>();
 
+        // First pass: Identify completed jobs and calculate total workers to release
         foreach (var jobEntry in jobs)
         {
             string jobName = jobEntry.Key;
             Job job = jobEntry.Value;
 
-            // Check if the job timer is still running
             if (!job.timer.IsRunning)
             {
                 completedJobs.Add(jobName);
-                totalNPCWorkers += job.workersAssigned; // Return workers to the pool
-                uiManager.SetTotalWorkers(totalNPCWorkers); // Update total workers in the UI
-                uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - job.workersAssigned); // Update active workers in the UI
+                workersToRelease += job.workersAssigned; // Accumulate the workers to release
             }
         }
 
-        // Remove completed jobs from the dictionary
+        // Second pass: Remove completed jobs and update the UI
         foreach (var jobName in completedJobs)
         {
             jobs.Remove(jobName);
             Debug.Log($"{jobName} is completed!");
+        }
+
+        // Update the available workers and the active workers in the UI
+        availableWorkers += workersToRelease;
+        uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - workersToRelease);
+
+        // Ensure active workers count cannot go below zero
+        if (uiManager.GetActiveWorkers() < 0)
+        {
+            uiManager.SetActiveWorkers(0);
         }
     }
 }

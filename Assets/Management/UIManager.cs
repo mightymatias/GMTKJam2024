@@ -5,19 +5,19 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI totalWorkersText;
     public TextMeshProUGUI activeWorkersText;
-    private int totalWorkers;
+    private int initialTotalWorkers; // This is the new field
     private int activeWorkers;
 
-    public void SetTotalWorkers(int workers)
+    public void SetInitialTotalWorkers(int workers)
     {
-        totalWorkers = workers;
-        totalWorkersText.text = $"Total Workers: {totalWorkers}";
+        initialTotalWorkers = workers;
+        totalWorkersText.text = $"{initialTotalWorkers}";
     }
 
     public void SetActiveWorkers(int workers)
     {
         activeWorkers = workers;
-        activeWorkersText.text = $"Active Workers: {activeWorkers}";
+        activeWorkersText.text = $"{activeWorkers}";
     }
 
     public int GetActiveWorkers()
