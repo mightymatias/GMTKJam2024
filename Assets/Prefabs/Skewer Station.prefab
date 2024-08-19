@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 2859118348057929536}
   - component: {fileID: 2708683283353308824}
   - component: {fileID: 1995347552703640406}
+  - component: {fileID: 2044387817833717203}
   m_Layer: 0
   m_Name: Skewer Station
   m_TagString: Untagged
@@ -294,3 +295,44 @@ CircleCollider2D:
   m_Offset: {x: -2.51, y: -1.83}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!68 &2044387817833717203
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492130788784694340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.7224474, y: -2.0582223}
+  - {x: -2.2322237, y: -2.0411663}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

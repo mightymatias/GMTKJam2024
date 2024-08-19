@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3041069393014094534}
   - component: {fileID: 9167952620083498113}
   - component: {fileID: 1146729862366160714}
+  - component: {fileID: 1742068153831518418}
   m_Layer: 0
   m_Name: Combination Station
   m_TagString: Untagged
@@ -165,6 +166,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionTime: 0
+  lastCombination: {fileID: 0}
+  interactionPossibilities:
+  - {fileID: 5270102811059594408, guid: b66e034e655b53d4c9417b16c17fb47c, type: 3}
+  - {fileID: 2045518410721689784, guid: 909f28501619f7b44bc9f5d3ba5383e6, type: 3}
+  - {fileID: 1198707366688718703, guid: 817560a76b228444286f66efdfbe6a55, type: 3}
+  - {fileID: 304574290040480490, guid: 7cd5b998793032f478907dff2fbb3ecb, type: 3}
+  - {fileID: 1354435383905212049, guid: db862f05428d7b74da23d840e4ec17d1, type: 3}
 --- !u!212 &3041069393014094534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -307,3 +315,44 @@ CircleCollider2D:
   m_Offset: {x: -0.2, y: 1.17}
   serializedVersion: 2
   m_Radius: 0.26
+--- !u!68 &1742068153831518418
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8886921385670761660}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.47289908, y: 0.9466131}
+  - {x: 0.03970301, y: 0.96265745}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

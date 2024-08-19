@@ -744,7 +744,7 @@ Transform:
   m_GameObject: {fileID: 681698974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.67, y: 3.63, z: 0}
+  m_LocalPosition: {x: -13.53, y: 3.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1939,7 +1939,7 @@ Transform:
   m_GameObject: {fileID: 1711950754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.08, y: -3.83, z: 0}
+  m_LocalPosition: {x: 2.08, y: -3.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2689,11 +2689,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2145359332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
-  m_PrefabInstance: {fileID: 2161677264322222884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &660599177624642154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3369,10 +3364,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3974047405653817250, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
-      propertyPath: cutVersion
-      value: 
-      objectReference: {fileID: 2145359332}
     - target: {fileID: 4109236822028810062, guid: 114eb5ef24f718a428a914fa4e35b283, type: 3}
       propertyPath: m_Name
       value: BreadCrumb
@@ -3390,30 +3381,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.data[0]
-      value: 
-      objectReference: {fileID: 5270102811059594408, guid: b66e034e655b53d4c9417b16c17fb47c, type: 3}
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.data[1]
-      value: 
-      objectReference: {fileID: 2045518410721689784, guid: 909f28501619f7b44bc9f5d3ba5383e6, type: 3}
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.data[2]
-      value: 
-      objectReference: {fileID: 1198707366688718703, guid: 817560a76b228444286f66efdfbe6a55, type: 3}
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.data[3]
-      value: 
-      objectReference: {fileID: 304574290040480490, guid: 7cd5b998793032f478907dff2fbb3ecb, type: 3}
-    - target: {fileID: 6592365865707427843, guid: 736fc83773d180e43ad099d427c02876, type: 3}
-      propertyPath: interactionPossibilities.Array.data[4]
-      value: 
-      objectReference: {fileID: 1354435383905212049, guid: db862f05428d7b74da23d840e4ec17d1, type: 3}
     - target: {fileID: 6751219686060443165, guid: 736fc83773d180e43ad099d427c02876, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.01
@@ -3471,10 +3438,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3900282544968163269, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
-      propertyPath: crumbName
-      value: Skewered Cheese Crumb
-      objectReference: {fileID: 0}
     - target: {fileID: 5117888380754689119, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.74

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1068149270255870432}
   - component: {fileID: 6523523784788132854}
   - component: {fileID: 4642653362314070678}
+  - component: {fileID: 6410951468516090724}
   m_Layer: 29
   m_Name: FireAntOven
   m_TagString: Untagged
@@ -240,6 +241,47 @@ CircleCollider2D:
   m_Offset: {x: -1.2, y: -0.34}
   serializedVersion: 2
   m_Radius: 0.31
+--- !u!68 &6410951468516090724
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302678013004566232}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.4248314, y: -0.7062118}
+  - {x: -0.91189855, y: -0.69928813}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7914669862058265300
 GameObject:
   m_ObjectHideFlags: 0
