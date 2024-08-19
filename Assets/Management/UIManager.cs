@@ -1,11 +1,11 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI totalWorkersText;
     public TextMeshProUGUI activeWorkersText;
-    private int initialTotalWorkers; // This is the new field
+    private int initialTotalWorkers;
     private int activeWorkers;
 
     public void SetInitialTotalWorkers(int workers)
@@ -23,5 +23,11 @@ public class UIManager : MonoBehaviour
     public int GetActiveWorkers()
     {
         return activeWorkers;
+    }
+
+    public void UpdateActiveWorkersBasedOnInk(float maxInk, float currentInk)
+    {
+        int activeWorkers = (int)(maxInk - currentInk); // Calculate active workers
+        SetActiveWorkers(activeWorkers); // Update the active workers display
     }
 }

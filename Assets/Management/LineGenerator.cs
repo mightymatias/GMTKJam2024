@@ -3,10 +3,26 @@ using UnityEngine;
 
 public class LineGenerator : MonoBehaviour
 {
+    public UIManager uiManager;
+
+    public GameObject breadDestination;
+    public GameObject meatDestination;
+    public GameObject cheeseDestination;
+
+    public AntManagement antManagement;
+    public Sprite breadSymbol;
+    public Sprite meatSymbol;
+    public Sprite cheeseSymbol;
+
+    private Dictionary<GameObject, string> destinationToJobMap =
+        new Dictionary<GameObject, string>();
+    private HashSet<string> activeConnections = new HashSet<string>(); // Track active connections
+
     public GameObject linePrefab;
     public GameObject canvasObject;
     public GameObject leftObject; // Object that controls canvas movement
     public GameObject nestObject; // The nest from where the lines originate
+
     public float snapRadius = 0.5f; // Radius for snapping
     public Color normalLineColor = Color.black; // Normal color of the line
     public Color outOfInkColor = Color.red; // Color of the line when out of ink
@@ -25,11 +41,22 @@ public class LineGenerator : MonoBehaviour
     {
         previousLeftPosition = leftObject.transform.position;
         previousNestPosition = nestObject.transform.position;
+
+        maxInk = antManagement.totalNPCWorkers; // Set maxInk based on totalNPCWorkers
         currentInk = maxInk; // Initialize ink
+
+        // Initialize destination-to-job mapping
+        destinationToJobMap[breadDestination] = "Bread";
+        destinationToJobMap[meatDestination] = "Meat";
+        destinationToJobMap[cheeseDestination] = "Cheese";
+
+        // Update UI
+        uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk);
     }
 
     void Update()
     {
+        // Update the position of the left object and the nest
         Vector2 currentLeftPosition = leftObject.transform.position;
         Vector2 leftDelta = currentLeftPosition - previousLeftPosition;
 
@@ -39,6 +66,7 @@ public class LineGenerator : MonoBehaviour
             previousLeftPosition = currentLeftPosition;
         }
 
+        // Check if the canvas is within the minimum allowed Y position
         RectTransform canvasRect = canvasObject.GetComponent<RectTransform>();
         float currentCanvasY = canvasRect.anchoredPosition.y;
 
@@ -47,6 +75,7 @@ public class LineGenerator : MonoBehaviour
             return;
         }
 
+        // Handle starting a new line
         if (Input.GetMouseButtonDown(0) && currentInk > 0f)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -66,6 +95,7 @@ public class LineGenerator : MonoBehaviour
             }
         }
 
+        // Handle finishing a line
         if (Input.GetMouseButtonUp(0))
         {
             if (activeLine != null)
@@ -83,11 +113,35 @@ public class LineGenerator : MonoBehaviour
                 {
                     currentInk -= totalDistance;
                     Debug.Log($"Total Distance: {totalDistance}. Remaining Ink: {currentInk}");
+
+                    // Check if the line connects to a valid destination
+                    GameObject closestSnapPoint = GetClosestSnapPoint(activeLine.GetEndPosition());
+                    if (
+                        closestSnapPoint != null
+                        && destinationToJobMap.ContainsKey(closestSnapPoint)
+                    )
+                    {
+                        string jobName = destinationToJobMap[closestSnapPoint];
+
+                        // Start the job if it's a valid, unique connection
+                        if (!activeConnections.Contains(jobName))
+                        {
+                            StartJobForConnection(jobName);
+                        }
+                        else
+                        {
+                            Debug.Log($"A connection to {jobName} is already active.");
+                        }
+                    }
                 }
+
+                // Update the UI to reflect the final state after drawing
+                uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk);
             }
             activeLine = null;
         }
 
+        // Handle updating an ongoing line
         if (activeLine != null)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -113,8 +167,15 @@ public class LineGenerator : MonoBehaviour
             {
                 SetLineColor(normalLineColor);
             }
+
+            // Calculate the predicted ink after drawing this segment
+            float inkAfterDrawing = currentInk - potentialTotalDistance;
+
+            // Update the UI in real-time to reflect the number of active workers
+            uiManager.UpdateActiveWorkersBasedOnInk(maxInk, inkAfterDrawing);
         }
 
+        // Handle deleting the oldest line (if right-clicked)
         if (Input.GetMouseButtonDown(1))
         {
             DeleteOldestLine();
@@ -181,6 +242,20 @@ public class LineGenerator : MonoBehaviour
         float lengthOfLine = line.GetTotalDistance();
         Debug.Log($"Deleting Line with Length: {lengthOfLine}");
 
+        // Check if the line is connected to a job destination
+        GameObject closestSnapPoint = GetClosestSnapPoint(line.GetEndPosition());
+        if (closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint))
+        {
+            string jobName = destinationToJobMap[closestSnapPoint];
+            if (activeConnections.Contains(jobName))
+            {
+                activeConnections.Remove(jobName);
+                // Instead of stopping the job immediately, flag it for stopping after completion
+                antManagement.FlagJobForStopAfterCompletion(jobName);
+                Debug.Log($"Flagged connection to {jobName} for stopping after job completion.");
+            }
+        }
+
         allLines.Remove(line);
         Destroy(line.gameObject);
 
@@ -200,8 +275,52 @@ public class LineGenerator : MonoBehaviour
         }
     }
 
+    public void UpdateInk(int availableWorkers)
+    {
+        maxInk = antManagement.totalNPCWorkers;
+        currentInk = Mathf.Min(currentInk, availableWorkers);
+
+        Debug.Log($"Ink updated. Max Ink: {maxInk}, Current Ink: {currentInk}");
+
+        // Update UI
+        uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk);
+    }
+
     public bool IsDrawingLine()
     {
         return activeLine != null;
+    }
+
+    void StartJobForConnection(string jobName)
+    {
+        Sprite jobSymbol = null;
+
+        switch (jobName)
+        {
+            case "Bread":
+                jobSymbol = breadSymbol;
+                break;
+            case "Meat":
+                jobSymbol = meatSymbol;
+                break;
+            case "Cheese":
+                jobSymbol = cheeseSymbol;
+                break;
+            default:
+                Debug.LogError("Job name not recognized: " + jobName);
+                return;
+        }
+        // Calculate the number of workers needed based on the length of the active line
+        float lineLength = activeLine.GetTotalDistance();
+        int workersForJob = Mathf.CeilToInt(lineLength);
+        float jobDuration = 60f; // Define job duration
+
+        // Assign workers and start the job in AntManagement
+        antManagement.AssignWorkersToJob(jobName, workersForJob, jobDuration, jobSymbol);
+
+        // Mark this connection as active
+        activeConnections.Add(jobName);
+
+        Debug.Log($"Job {jobName} started with {workersForJob} workers for {jobDuration} seconds.");
     }
 }

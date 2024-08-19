@@ -1,3 +1,4 @@
+using System; // Add this line
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,20 +10,24 @@ public class DynamicTimerController : MonoBehaviour
 
     private List<Timer> activeTimers = new List<Timer>();
 
-    public Timer CreateAndConfigureTimer(float duration, Sprite symbol)
+    public Timer CreateAndConfigureTimer(float duration, Sprite symbol, Action onTimerCompleted)
     {
-        // Calculate the position based on the number of active timers
-        Vector3 newPosition =
-            basePosition - new Vector3(0, activeTimers.Count * verticalSpacing, 0);
+        Vector3 newPosition = basePosition - new Vector3(0, activeTimers.Count * verticalSpacing, 0);
 
-        // Create the new timer using the TimerManager
         Timer newTimer = timerManager.CreateTimer();
-        newTimer.SetTime(duration);
-        newTimer.SetSymbol(symbol);
+
+        RectTransform rectTransform = newTimer.GetComponent<RectTransform>();
+        rectTransform.localScale = Vector3.one;
+
         newTimer.SetPosition(newPosition);
+        newTimer.SetSymbol(symbol);
+        newTimer.SetTime(duration);
+
+        // Subscribe to the TimerCompleted event
+        newTimer.TimerCompleted += onTimerCompleted;
+
         newTimer.StartTimer(duration);
 
-        // Add the new timer to the list of active timers
         activeTimers.Add(newTimer);
 
         return newTimer;
@@ -38,6 +43,7 @@ public class DynamicTimerController : MonoBehaviour
             if (!timer.IsRunning)
             {
                 completedTimers.Add(timer);
+                Destroy(timer.gameObject); // Optional: destroy the timer's GameObject
             }
         }
 
@@ -45,7 +51,6 @@ public class DynamicTimerController : MonoBehaviour
         foreach (var completedTimer in completedTimers)
         {
             activeTimers.Remove(completedTimer);
-            Destroy(completedTimer.gameObject); // Optional: destroy the timer's GameObject
         }
 
         // Adjust the positions of remaining timers

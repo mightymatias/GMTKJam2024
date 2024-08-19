@@ -5,34 +5,32 @@ public class AntManagement : MonoBehaviour
 {
     public int totalNPCWorkers = 10;
     public DynamicTimerController dynamicTimerController;
-    public UIManager uiManager; // Reference to UIManager
-    private int availableWorkers; // Field to track available workers
+    public UIManager uiManager;
+    private int availableWorkers;
 
     private Dictionary<string, Job> jobs = new Dictionary<string, Job>();
+    private HashSet<string> ongoingJobs = new HashSet<string>(); // Track ongoing jobs
 
-    // Structure to hold the job details
     private class Job
     {
         public int workersAssigned;
         public float timePerWorker;
-        public float timeRemaining;
         public Timer timer;
+        public bool isProcessed; // Flag to ensure workers are only released once
     }
 
     void Start()
     {
-        // Set the initial total workers and the available workers
         uiManager.SetInitialTotalWorkers(totalNPCWorkers);
         availableWorkers = totalNPCWorkers;
-
-        uiManager.SetActiveWorkers(0); // No workers are active initially
+        uiManager.SetActiveWorkers(0);
     }
 
     public void AssignWorkersToJob(
         string jobName,
         int numberOfWorkers,
         float timePerWorker,
-        Sprite symbol
+        Sprite jobSymbol
     )
     {
         if (numberOfWorkers > availableWorkers)
@@ -42,58 +40,126 @@ public class AntManagement : MonoBehaviour
         }
 
         availableWorkers -= numberOfWorkers;
-        uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() + numberOfWorkers); // Update the active workers in the UI
+        uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() + numberOfWorkers);
 
-        // Calculate total time based on number of workers
         float totalTime = timePerWorker / numberOfWorkers;
 
-        // Create and configure the timer using CreateAndConfigureTimer from DynamicTimerController
-        Timer jobTimer = dynamicTimerController.CreateAndConfigureTimer(totalTime, symbol);
-        
-        // Create and store the job in the dictionary
+        // Pass the OnJobCompleted method as a callback to the timer
+        Timer jobTimer = dynamicTimerController.CreateAndConfigureTimer(
+            totalTime,
+            jobSymbol,
+            () => OnJobCompleted(jobName) // Callback when timer completes
+        );
+
         Job newJob = new Job
         {
             workersAssigned = numberOfWorkers,
             timePerWorker = timePerWorker,
-            timeRemaining = totalTime,
             timer = jobTimer,
+            isProcessed =
+                false // Initialize as unprocessed
+            ,
         };
+
         jobs[jobName] = newJob;
+        ongoingJobs.Add(jobName);
+
+        Debug.Log(
+            $"Job '{jobName}' started with {numberOfWorkers} workers for {totalTime} seconds."
+        );
     }
 
-    void Update()
+    public void FlagJobForStopAfterCompletion(string jobName)
     {
-        int workersToRelease = 0;
-        List<string> completedJobs = new List<string>();
-
-        // First pass: Identify completed jobs and calculate total workers to release
-        foreach (var jobEntry in jobs)
+        if (jobs.ContainsKey(jobName))
         {
-            string jobName = jobEntry.Key;
-            Job job = jobEntry.Value;
+            Job job = jobs[jobName];
 
-            if (!job.timer.IsRunning)
+            // Ensure the job is not removed from jobs dictionary prematurely
+            if (ongoingJobs.Contains(jobName))
             {
-                completedJobs.Add(jobName);
-                workersToRelease += job.workersAssigned; // Accumulate the workers to release
+                ongoingJobs.Remove(jobName); // Prevent further looping
+                Debug.Log($"{jobName} job flagged for stop and removed from ongoingJobs.");
+            }
+
+            Debug.Log($"{jobName} job is flagged to stop after the current iteration.");
+        }
+        else
+        {
+            Debug.LogWarning(
+                $"FlagJobForStopAfterCompletion called with non-existent job: {jobName}"
+            );
+        }
+    }
+
+    private void OnJobCompleted(string jobName)
+    {
+        Debug.Log($"OnJobCompleted called for job: {jobName}");
+
+        if (jobs.ContainsKey(jobName))
+        {
+            Debug.Log($"Job '{jobName}' found in jobs dictionary.");
+            Job job = jobs[jobName];
+
+            // Ensure the job has not been processed before
+            if (!job.isProcessed)
+            {
+                job.isProcessed = true; // Mark as processed to prevent reprocessing
+
+                // Release workers and update the UI
+                availableWorkers += job.workersAssigned;
+                uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - job.workersAssigned);
+
+                Debug.Log($"Job '{jobName}' completed. Checking if it was flagged for stop...");
+
+                if (!ongoingJobs.Contains(jobName))
+                {
+                    // Job has been completed and is flagged to stop
+                    jobs.Remove(jobName);
+                    Debug.Log($"{jobName} job has been completed and workers are released.");
+
+                    // Now update the UI to reflect worker availability after job completion
+                    uiManager.UpdateActiveWorkersBasedOnInk(totalNPCWorkers, availableWorkers);
+                }
+                else
+                {
+                    Debug.Log($"Job '{jobName}' is looping again.");
+                    AssignWorkersToJob(
+                        jobName,
+                        job.workersAssigned,
+                        job.timePerWorker,
+                        job.timer.GetJobSymbol()
+                    );
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Job '{jobName}' has already been processed.");
             }
         }
-
-        // Second pass: Remove completed jobs and update the UI
-        foreach (var jobName in completedJobs)
+        else
         {
-            jobs.Remove(jobName);
-            Debug.Log($"{jobName} is completed!");
+            Debug.LogError($"OnJobCompleted called with non-existent job: '{jobName}'");
         }
+    }
 
-        // Update the available workers and the active workers in the UI
-        availableWorkers += workersToRelease;
-        uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - workersToRelease);
-
-        // Ensure active workers count cannot go below zero
-        if (uiManager.GetActiveWorkers() < 0)
+    public void StopJob(string jobName)
+    {
+        if (ongoingJobs.Contains(jobName))
         {
-            uiManager.SetActiveWorkers(0);
+            ongoingJobs.Remove(jobName);
+
+            if (jobs.ContainsKey(jobName))
+            {
+                Job job = jobs[jobName];
+
+                // Instead of releasing workers immediately, mark the job to stop after the current iteration
+                job.isProcessed = true;
+                Debug.Log($"{jobName} job is marked for stopping after completion.");
+
+                // Ensure job is not removed from jobs dictionary prematurely
+                // It will be removed in OnJobCompleted when it finishes
+            }
         }
     }
 }

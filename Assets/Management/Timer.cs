@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class Timer : MonoBehaviour
 
     private float timeRemaining;
     private bool timerIsRunning = false;
+
+    public event Action TimerCompleted; // Event triggered when the timer completes
 
     public bool IsRunning
     {
@@ -36,6 +39,8 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 DisplayTime(timeRemaining); // Ensure the last update is shown
+                Debug.Log("Timer completed. Invoking TimerCompleted event.");
+                TimerCompleted?.Invoke(); // Trigger the event when the timer completes
             }
         }
     }
@@ -49,7 +54,6 @@ public class Timer : MonoBehaviour
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         timerText.ForceMeshUpdate(); // Force update to ensure text is refreshed
-        Debug.Log($"Current Countdown Time: {minutes}, {seconds}");
     }
 
     public void SetSymbol(Sprite symbol)
@@ -57,12 +61,18 @@ public class Timer : MonoBehaviour
         if (symbolImage != null)
         {
             symbolImage.sprite = symbol;
+            symbolImage.SetNativeSize();
             symbolImage.enabled = symbol != null;
         }
         else
         {
             Debug.LogError("Symbol Image is not assigned in the Timer prefab.");
         }
+    }
+
+    public Sprite GetJobSymbol()
+    {
+        return symbolImage.sprite;
     }
 
     public void SetTime(float duration)

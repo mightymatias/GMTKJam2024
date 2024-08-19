@@ -14,12 +14,6 @@ public class JobsTesting : MonoBehaviour
     public Sprite meatSymbol;
     public Sprite cheeseSymbol;
 
-    [Header("Timer Prefab Settings")]
-    public GameObject timerPrefab; // Reference to the Timer prefab
-    public Transform parentCanvasTransform; // Reference to the parent Canvas or UI panel
-
-    public Vector3 timerPosition = new Vector3(100, 100, 0);
-
     void Start()
     {
         startJobButton.onClick.AddListener(StartJob);
@@ -46,17 +40,7 @@ public class JobsTesting : MonoBehaviour
                 return;
         }
 
-        // Instantiate the Timer prefab and parent it to the correct Canvas
-        GameObject newTimer = Instantiate(timerPrefab, parentCanvasTransform);
-        newTimer.transform.localPosition = timerPosition; // Set the position relative to the parent
-        newTimer.transform.localScale = Vector3.one; // Reset scale to ensure consistency
-
-        // Set the job symbol in the image component
-        Image jobImage = newTimer.GetComponentInChildren<Image>();
-        jobImage.sprite = jobSymbol;
-        jobImage.SetNativeSize(); // Adjust size to match the sprite resolution
-
-        // Call the method to assign workers to the job in AntManagement with the appropriate symbol
+        // Directly assign workers to the job, let the DynamicTimerController handle timer creation
         antManager.AssignWorkersToJob(jobName, workersForJob, jobDuration, jobSymbol);
     }
 }
