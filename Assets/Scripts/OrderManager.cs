@@ -65,8 +65,6 @@ public class OrderManager : MonoBehaviour
 
         /*-----------Create a new order prefab-----------*/
         GameObject canvasObject = GameObject.Find("Canvas");
-
-        // TODO: FIGURE OUT WHERE THESE ARE GOING ON THE UI AND HOW TO MAKE THEM PUSH EACH OTHER
         UnityEngine.Vector2 spawnPoint = new UnityEngine.Vector2(-1050,436);
         GameObject newOrderCard = Instantiate(orderCardPrefab, transform.position, UnityEngine.Quaternion.identity);
         newOrderCard.transform.SetParent(canvasObject.transform);
