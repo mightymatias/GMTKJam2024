@@ -14,6 +14,8 @@ public class HandTake : MonoBehaviour
         originalPosition = transform.position;
         StartCoroutine(SlideToPosition(targetPosition, oneWayMovementDuration, () => {
             //Intermediary Code would go here
+            //Check to see if the thing picked up is in the order queue. If so, remove it, score a point, etc.
+
 
             // Sliding back to the original position
             StartCoroutine(SlideToPosition(originalPosition, oneWayMovementDuration, () => {
@@ -35,15 +37,6 @@ public class HandTake : MonoBehaviour
 
         transform.position = targetPosition;
         onComplete?.Invoke();
-    }
-
-    public void checkForFood(){
-        //if food is in the trigger, collect it
-        moveFoodtoHand();
-    }
-
-    public void moveFoodtoHand(){
-
     }
 
     public void OnTriggerEnter2D(Collider2D other){
