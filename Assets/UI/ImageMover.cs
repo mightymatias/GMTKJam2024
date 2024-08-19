@@ -7,9 +7,9 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 {
     public Image img;
     public Canvas canvas;
+    public LineGenerator lineGenerator; // Reference to the LineGenerator
 
     private RectTransform rectTransform;
-    private RectTransform canvasRectTransform;
     private Vector2 originalPosition;
     public float hoverOffsetY = 25f;
     public float clickOffsetY = 75f;
@@ -23,10 +23,23 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         img.alphaHitTestMinimumThreshold = 0.5f;
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
+    }
 
-        if (canvas != null)
+    private void Update()
+    {
+        // Handle the situation where the user is drawing on the canvas.
+        if (lineGenerator != null && lineGenerator.IsDrawingLine())
         {
-            canvasRectTransform = canvas.GetComponent<RectTransform>();
+            // If the user is actively drawing a line, do not move the image back.
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0) && isClicked)
+        {
+            if (!IsPointerOverGameObjectAndChildren() && !IsPointerOverCanvas())
+            {
+                MoveBackToOriginalPosition();
+            }
         }
     }
 
@@ -68,34 +81,35 @@ public class ImageMover : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     private IEnumerator MoveToPosition(Vector2 targetPosition)
     {
         Vector2 startPosition = rectTransform.anchoredPosition;
-        Vector2 canvasStartPosition = Vector2.zero;
-
-        if (canvasRectTransform != null)
-        {
-            canvasStartPosition = canvasRectTransform.anchoredPosition;
-        }
-
         float elapsedTime = 0;
 
         while (elapsedTime < moveDuration)
         {
             rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / moveDuration);
-
-            if (canvasRectTransform != null)
-            {
-                Vector2 canvasTargetPosition = canvasStartPosition + (targetPosition - startPosition);
-                canvasRectTransform.anchoredPosition = Vector2.Lerp(canvasStartPosition, canvasTargetPosition, elapsedTime / moveDuration);
-            }
-
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         rectTransform.anchoredPosition = targetPosition;
+    }
 
-        if (canvasRectTransform != null)
-        {
-            canvasRectTransform.anchoredPosition = canvasStartPosition + (targetPosition - startPosition);
-        }
+    private bool IsPointerOverGameObjectAndChildren()
+    {
+        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, null);
+    }
+
+    private bool IsPointerOverCanvas()
+    {
+        // Check if the pointer is over the canvas (used for line drawing)
+        RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
+        return RectTransformUtility.RectangleContainsScreenPoint(canvasRectTransform, Input.mousePosition, null);
+    }
+
+    private void MoveBackToOriginalPosition()
+    {
+        StopAllCoroutines();
+        StartCoroutine(MoveToPosition(originalPosition));
+        isHovered = false;
+        isClicked = false;
     }
 }
