@@ -53,7 +53,7 @@ MonoBehaviour:
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 9179438871129956876, guid: c17f415ff2c28cb4e8bfc8f323a89164, type: 3}
   isFinalProduct: 0
-  crumbName: 
+  crumbName: Cheese Crumb
 --- !u!212 &2565222407154067448
 SpriteRenderer:
   m_ObjectHideFlags: 0

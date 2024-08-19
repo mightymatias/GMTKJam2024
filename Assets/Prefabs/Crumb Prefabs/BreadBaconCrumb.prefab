@@ -53,7 +53,7 @@ MonoBehaviour:
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   isFinalProduct: 0
-  crumbName: 
+  crumbName: Bread Bacon Crumb
   ingredient1: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
   ingredient2: {fileID: 3068034968002755549, guid: b2e1e8ca5d660f24c89228697103f291, type: 3}
 --- !u!212 &6774149176086134758

@@ -53,7 +53,7 @@ MonoBehaviour:
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   isFinalProduct: 1
-  crumbName: 
+  crumbName: Toast Crumb
 --- !u!212 &835835516804274093
 SpriteRenderer:
   m_ObjectHideFlags: 0

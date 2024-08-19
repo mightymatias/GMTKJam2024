@@ -53,7 +53,7 @@ MonoBehaviour:
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   isFinalProduct: 0
-  crumbName: 
+  crumbName: Sliced Bread Crumb
 --- !u!212 &1171851098055778867
 SpriteRenderer:
   m_ObjectHideFlags: 0

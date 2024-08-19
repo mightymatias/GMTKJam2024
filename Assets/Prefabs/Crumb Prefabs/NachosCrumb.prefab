@@ -48,14 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05de6fe38bb3bd8459908a236fe3bb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combinationTiers: 
   cookedVersion: {fileID: 0}
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   isFinalProduct: 1
-  crumbName: 
+  crumbName: Nachos Crumb
   ingredient1: {fileID: 3100116985274089396, guid: 9fbfec1bd2be4e14dbedc320d42d42e7, type: 3}
   ingredient2: {fileID: 4666791404952227016, guid: 809bbc11f546dfd48ab74934a34b44be, type: 3}
-  tier: 1
 --- !u!212 &2305427196246025595
 SpriteRenderer:
   m_ObjectHideFlags: 0

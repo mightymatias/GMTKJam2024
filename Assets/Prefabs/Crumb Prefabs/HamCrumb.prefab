@@ -53,7 +53,7 @@ MonoBehaviour:
   cutVersion: {fileID: 0}
   skeweredVersion: {fileID: 0}
   isFinalProduct: 0
-  crumbName: 
+  crumbName: Ham Crumb
 --- !u!212 &2519414740664987820
 SpriteRenderer:
   m_ObjectHideFlags: 0
