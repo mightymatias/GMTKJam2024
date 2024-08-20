@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1784037653351853485}
+  defaultColor: {r: 0.7647059, g: 0.79607844, b: 0.8745098, a: 1}
+  insufficientInkColor: {r: 0.9433962, g: 0.52954787, b: 0.52954787, a: 1}
   Smoothness: 0.1
   StartingWidth: 0.1
   EndingWidth: 0.1

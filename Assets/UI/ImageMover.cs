@@ -90,6 +90,12 @@ public class ImageMover
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (lineGenerator != null && lineGenerator.IsDrawingLine())
+        {
+            // Ignore the click if a line is being drawn
+            return;
+        }
+
         if (isHovered)
         {
             StopAllCoroutines();

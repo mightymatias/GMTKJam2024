@@ -79,14 +79,22 @@ public class AntManagement : MonoBehaviour
         {
             Job job = jobs[jobName];
 
-            // Ensure the job is not removed from jobs dictionary prematurely
             if (ongoingJobs.Contains(jobName))
             {
                 ongoingJobs.Remove(jobName); // Prevent further looping
                 Debug.Log($"{jobName} job flagged for stop and removed from ongoingJobs.");
             }
 
-            Debug.Log($"{jobName} job is flagged to stop after the current iteration.");
+            // Ensure the job is correctly flagged to stop after completion
+            if (!job.isProcessed)
+            {
+                job.isProcessed = true;
+                Debug.Log($"{jobName} job is flagged to stop after the current iteration.");
+            }
+            else
+            {
+                Debug.LogWarning($"{jobName} job was already processed, flagging skipped.");
+            }
         }
         else
         {
@@ -102,15 +110,12 @@ public class AntManagement : MonoBehaviour
 
         if (jobs.ContainsKey(jobName))
         {
-            Debug.Log($"Job '{jobName}' found in jobs dictionary.");
             Job job = jobs[jobName];
 
-            // Ensure the job has not been processed before
             if (!job.isProcessed)
             {
                 job.isProcessed = true; // Mark as processed to prevent reprocessing
 
-                // Release workers and update the UI
                 availableWorkers += job.workersAssigned;
                 uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - job.workersAssigned);
 
@@ -119,13 +124,12 @@ public class AntManagement : MonoBehaviour
                 // Trigger crumb spawn
                 crumbSpawner?.SpawnCrumb(jobName);
 
+                // Ensure job cleanup occurs if flagged for stop
                 if (!ongoingJobs.Contains(jobName))
                 {
-                    // Job has been completed and is flagged to stop
                     jobs.Remove(jobName);
-                    Debug.Log($"{jobName} job has been completed and workers are released.");
+                    Debug.Log($"{jobName} job has been completed and cleaned up.");
 
-                    // Now update the UI to reflect worker availability after job completion
                     uiManager.UpdateActiveWorkersBasedOnInk(totalNPCWorkers, availableWorkers);
                 }
                 else

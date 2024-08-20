@@ -282,7 +282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.893}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -403.2, y: -183.4}
+  m_AnchoredPosition: {x: -417.6, y: -182.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141218696
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5b9987aed9c9c641a5d8d4e6009751d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fb573580d36424498a1a8b0588e2c67, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Left Click to \nRemove Latest Line"
+  m_text: "Right Click to \nRemove Latest Line"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1c82223b28be0944b5389f304658c9b, type: 2}
   m_sharedMaterial: {fileID: 3350363640733599192, guid: e1c82223b28be0944b5389f304658c9b, type: 2}
@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4103330677179649219, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4103330677179649219, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_SortingLayerID
@@ -1079,6 +1079,18 @@ PrefabInstance:
       propertyPath: lineGenerator
       value: 
       objectReference: {fileID: 181986594}
+    - target: {fileID: 4966348400459538557, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966348400459538557, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966348400459538557, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5321535416840096767, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -1086,6 +1098,10 @@ PrefabInstance:
     - target: {fileID: 6002200321793751320, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654058777772387291, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339691395679583805, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -1111,6 +1127,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930852874133453785, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212305654606527182, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: jobManager
+      value: 
+      objectReference: {fileID: 1759578653}
     - target: {fileID: 9212305654606527182, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: snapRadius
       value: 0.5
@@ -1986,6 +2010,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &999426260 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3165862394134894854, guid: 99b0dc899202a554595edc332624956b, type: 3}
+  m_PrefabInstance: {fileID: 5398865951621625881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1031143217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4861081709851268864, guid: 0182cf20d6818de4ba2b255fb180d43b, type: 3}
@@ -2079,6 +2108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1531588855781335527, guid: a280a556419d7a4419a04bba01224fcb, type: 3}
+      propertyPath: timerPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2014759952533331929, guid: dd2fc3a68a60a5a498204be0d17a69f7, type: 3}
     - target: {fileID: 3888006152446103269, guid: a280a556419d7a4419a04bba01224fcb, type: 3}
       propertyPath: m_Camera
       value: 
@@ -3144,7 +3177,10 @@ GameObject:
   - component: {fileID: 1759578652}
   - component: {fileID: 1759578651}
   - component: {fileID: 1759578653}
+<<<<<<< Updated upstream
   - component: {fileID: 1759578654}
+=======
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3166,6 +3202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1107991997}
+  - {fileID: 999426260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1759578648
@@ -3302,7 +3339,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759578646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90d4c1b9a3d61254aacb681e5b0e26fa, type: 3}
   m_Name: 
@@ -3326,14 +3363,20 @@ MonoBehaviour:
   timerManager: {fileID: 1107991996}
   basePosition: {x: 75, y: 700, z: 0}
   verticalSpacing: 150
+<<<<<<< Updated upstream
 --- !u!82 &1759578653
 AudioSource:
+=======
+--- !u!114 &1759578653
+MonoBehaviour:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759578646}
   m_Enabled: 1
+<<<<<<< Updated upstream
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2bde60d3d2d047c68a7853a945e9deb, type: 3}
@@ -3518,6 +3561,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bf74e9ca38fc47a8f7e05313bc9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalNPCWorkers: 10
+  dynamicTimerController: {fileID: 1759578652}
+  uiManager: {fileID: 1369224465}
+  crumbSpawner: {fileID: 664075240}
+>>>>>>> Stashed changes
 --- !u!1 &1760772822
 GameObject:
   m_ObjectHideFlags: 0
@@ -4701,7 +4754,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1759578647}
     m_Modifications:
     - target: {fileID: 669688863334942708, guid: 99b0dc899202a554595edc332624956b, type: 3}
       propertyPath: mainCharacter
@@ -4795,6 +4848,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 754116242}
+    - target: {fileID: 4152118316577654641, guid: 99b0dc899202a554595edc332624956b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1827682011
+      objectReference: {fileID: 0}
     - target: {fileID: 6684176825265040157, guid: 99b0dc899202a554595edc332624956b, type: 3}
       propertyPath: m_Name
       value: YOUDIED
@@ -5068,4 +5125,3 @@ SceneRoots:
   - {fileID: 1760772825}
   - {fileID: 322399966}
   - {fileID: 617882082}
-  - {fileID: 5398865951621625881}

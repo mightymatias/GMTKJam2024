@@ -7,10 +7,12 @@ public class Line : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
+    public Color defaultColor = Color.white; // The default color for the line
+    public Color insufficientInkColor = Color.red; // The color when there's insufficient ink/workers
+
     List<Vector2> points;
 
     public float Smoothness = .2f;
-
     public float StartingWidth = .1f;
     public float EndingWidth = .1f;
     public int NumCapVertices = 10;
@@ -27,6 +29,9 @@ public class Line : MonoBehaviour
         lineRenderer.endWidth = EndingWidth;
         lineRenderer.numCapVertices = NumCapVertices;
         lineRenderer.sortingLayerName = "UI";
+
+        // Set the default color when the line is created
+        SetLineColor(defaultColor);
     }
 
     public float UpdateLine(Vector2 position)
@@ -85,5 +90,12 @@ public class Line : MonoBehaviour
             return points.Last();
         }
         return Vector2.zero; // Return a default value if no points are set
+    }
+
+    // Add the SetLineColor method to change the line color
+    public void SetLineColor(Color color)
+    {
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
     }
 }
