@@ -13,9 +13,11 @@ public class ImageMover
     public Image img;
     public Canvas canvas;
     public LineGenerator lineGenerator; // Reference to the LineGenerator
+    public AudioClip clickSound; // Sound to play on click
 
     private RectTransform rectTransform;
     private Vector2 originalPosition;
+    private AudioSource audioSource; // Reference to the AudioSource component
     public float hoverOffsetY = 25f;
     public float clickOffsetY = 75f;
     public float moveDuration = 0.2f;
@@ -28,6 +30,12 @@ public class ImageMover
         img.alphaHitTestMinimumThreshold = 0.5f;
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
+
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource if it's missing
+        }
     }
 
     private void Update()
@@ -88,6 +96,12 @@ public class ImageMover
             Vector2 clickPosition = originalPosition + new Vector2(0, clickOffsetY);
             StartCoroutine(MoveToPosition(clickPosition));
             isClicked = true; // Flag to prevent hover movement after click
+
+            // Play the click sound
+            if (clickSound != null)
+            {
+                audioSource.PlayOneShot(clickSound);
+            }
         }
     }
 
