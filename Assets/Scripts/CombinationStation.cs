@@ -8,6 +8,15 @@ public class CombinationStation : InteractionStation
     int currentTier = 0;
     public Crumb lastCombination;
     public ComplexCrumb[] interactionPossibilities;
+    public bool isThereACrumb = false;
+
+    void Update(){
+        if (transform.childCount < 3 && isThereACrumb){
+            isThereACrumb = false;
+            combinationReset();
+        }
+
+    }
     protected override void OnInteractionStart(Crumb crumb)
     {
 
@@ -16,15 +25,19 @@ public class CombinationStation : InteractionStation
     protected override void OnInteractionComplete(Crumb crumb){
         crumb.OnPlace();
         Debug.Log(crumb.crumbName + " is placed on the station!");
-        // tier 0 is two normal crumbs. Every tier after is a crumb and a complex crumb
         if (currentTier > 0){
             Crumb combinedCrumb = TryToCombine(crumb, lastCombination);
+            Debug.Log("Combining " + lastCombination + " with " + crumb);
             if (combinedCrumb != null){
                 Destroy(crumb.gameObject);
                 Destroy(lastCombination.gameObject);
-                Instantiate(combinedCrumb.GameObject(), transform.Find("Interact Position").position, Quaternion.identity);
-                lastCombination = null;
-                currentTier = 0;
+                GameObject newCrumb = Instantiate(combinedCrumb.GameObject(), transform.Find("Interact Position").position, Quaternion.identity);
+                newCrumb.transform.SetParent(GameObject.Find("Combination Station").transform);
+                Debug.Log("crumb?" + isThereACrumb);
+                isThereACrumb = true;
+                newCrumb.GetComponent<PolygonCollider2D>().enabled = false;
+                newCrumb.GetComponent<Rigidbody2D>().simulated = true;
+                lastCombination = newCrumb.GetComponent<Crumb>();
             }
         } else {
             lastCombination = crumb;
@@ -35,28 +48,30 @@ public class CombinationStation : InteractionStation
         
     }
 
+    protected void combinationReset(){
+        Debug.Log("Resetting Station");
+        currentTier = 0;
+        lastCombination = null;
+    }
+
     protected bool isInteractionComplete(Crumb crumb){
         return crumb.isFinalProduct;
     }
 
     public override bool CanInteractWithCrumb(Crumb crumb){
-        Debug.Log("CURRENT TIER: " + currentTier);
         // if this is the first ingredient in (of 2), check all ingredient 1's to see if it's on the list
         if (currentTier == 0){
             Debug.Log(crumb.crumbName);
             foreach (ComplexCrumb interaction in interactionPossibilities){
                 Debug.Log(interaction.ingredient1.GetComponent<Crumb>().crumbName);
                 if (interaction.ingredient1.GetComponent<Crumb>().crumbName == crumb.crumbName){
-                    Debug.Log("returning true ing1");
                     return true;
                 }
             }
             return false;
         } else { // else this is ingredient 2, and we do the same thing, but with ingredient 2's
             foreach (ComplexCrumb interaction in interactionPossibilities){
-                Debug.Log("..searching ingredient 2");
                 if (interaction.ingredient2.GetComponent<Crumb>().crumbName == crumb.crumbName){
-                    Debug.Log("returning true ing2");
                     return true;
                 }
             }
@@ -76,12 +91,6 @@ public class CombinationStation : InteractionStation
     }
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
