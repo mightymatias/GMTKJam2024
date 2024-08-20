@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement; // For loading the main menu scene
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeInScreen : MonoBehaviour
@@ -14,6 +14,7 @@ public class FadeInScreen : MonoBehaviour
     private Color screenColor;
     private Color textColor;
     private Color additionalTextColor;
+    private CanvasGroup canvasGroup;
 
     void Start()
     {
@@ -31,10 +32,23 @@ public class FadeInScreen : MonoBehaviour
         blackScreen.color = screenColor;
         messageText.color = textColor;
         additionalText.color = additionalTextColor;
+
+        // Get or add a CanvasGroup component
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
+
+        // Set the initial CanvasGroup properties
+        canvasGroup.alpha = 0f; // Fully transparent initially
+        canvasGroup.interactable = false; // No interaction
+        canvasGroup.blocksRaycasts = false; // Allow clicks through the panel
     }
 
     public void StartFadeIn()
     {
+        // Start the fade-in sequence
         StartCoroutine(FadeInSequence());
     }
 
@@ -43,28 +57,39 @@ public class FadeInScreen : MonoBehaviour
         // Pause the game
         Time.timeScale = 0f;
 
+        // Enable interaction and raycast blocking
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+
         // Fade in the black screen and first text
-        yield return StartCoroutine(FadeIn(blackScreen, screenColor));
-        yield return StartCoroutine(FadeIn(messageText, textColor));
+        yield return FadeIn(blackScreen, screenColor);
+        yield return FadeIn(messageText, textColor);
 
         // After the first text is fully visible, fade in the additional text
-        yield return StartCoroutine(FadeIn(additionalText, additionalTextColor));
+        yield return FadeIn(additionalText, additionalTextColor);
 
         // Wait for player input to return to main menu
         StartCoroutine(WaitForInput());
     }
 
-    private IEnumerator FadeIn(Graphic uiElement, Color targetColor)
+    private IEnumerator FadeIn(Graphic uiElement, Color initialColor)
     {
         float timer = 0f;
+        Color targetColor = initialColor;
         while (timer < fadeDuration)
         {
             timer += Time.unscaledDeltaTime;
-            float alpha = timer / fadeDuration;
+            float alpha = Mathf.Clamp01(timer / fadeDuration);
 
             // Apply fade effect
-            targetColor.a = Mathf.Clamp01(alpha);
+            targetColor.a = alpha;
             uiElement.color = targetColor;
+
+            // Update the CanvasGroup alpha if we're fading the blackScreen
+            if (uiElement == blackScreen)
+            {
+                canvasGroup.alpha = alpha;
+            }
 
             yield return null;
         }
@@ -72,6 +97,12 @@ public class FadeInScreen : MonoBehaviour
         // Ensure full opacity after fade
         targetColor.a = 1f;
         uiElement.color = targetColor;
+
+        // Ensure CanvasGroup alpha is fully set if we faded the blackScreen
+        if (uiElement == blackScreen)
+        {
+            canvasGroup.alpha = 1f;
+        }
     }
 
     private IEnumerator WaitForInput()
@@ -90,5 +121,15 @@ public class FadeInScreen : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void HidePanel()
+    {
+        // Disable interaction and raycast blocking
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+
+        // Make the panel fully transparent
+        canvasGroup.alpha = 0f;
     }
 }
