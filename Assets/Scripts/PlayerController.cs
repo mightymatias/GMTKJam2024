@@ -109,8 +109,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Debug.Log(closestStation + " with distance " + closestStationDistance);
-
         // If a station was found
         if (closestStation != null){
             // if the crumb can't go there, print a debug log. PROBABLY WANT A UI MESSAGE

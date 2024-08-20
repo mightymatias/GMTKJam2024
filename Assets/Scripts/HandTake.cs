@@ -43,6 +43,9 @@ public class HandTake : MonoBehaviour
         GameObject otherObject = other.gameObject;
         otherObject.transform.position = transform.Find("Interact Position").position;
         otherObject.transform.SetParent(transform);
+
+        OrderManager orderManager = FindObjectOfType<OrderManager>();
+        orderManager.DestroyOrder(otherObject);
     }
         
 

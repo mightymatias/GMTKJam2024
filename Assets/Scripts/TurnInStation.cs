@@ -12,7 +12,6 @@ public class TurnInStation : InteractionStation
     }
 
     protected override void OnInteractionStart(Crumb crumb){
-        Debug.Log(crumb.crumbName + " has started interaction");
         SpawnObject();
         //spawn a hand
     }

@@ -11,7 +11,6 @@ public abstract class InteractionStation : MonoBehaviour
     public virtual void StartInteraction(Crumb crumb){
         crumb.GetComponent<PolygonCollider2D>().enabled = false;
         crumb.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
-        Debug.Log("Disabled Polygon Collider2D");
         StartCoroutine(InteractionCoroutine(crumb));
     }
 
