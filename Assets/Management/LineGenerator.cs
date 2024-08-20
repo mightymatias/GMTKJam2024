@@ -43,7 +43,6 @@ public class LineGenerator : MonoBehaviour
 
     void Update()
     {
-        // Ensure that drawing is only attempted if the mouse is over the correct area
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -74,9 +73,22 @@ public class LineGenerator : MonoBehaviour
 
     private void StartDrawingLine(Vector2 startPos)
     {
-        // Create a new line only if the user is clicking near the nestObject
         if (activeLine == null)
         {
+            GameObject closestSnapPoint = GetClosestSnapPoint(startPos);
+
+            if (closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint))
+            {
+                string jobName = destinationToJobMap[closestSnapPoint];
+
+                // Prevent starting a new line if there's already an active connection to this job
+                if (activeConnections.Contains(jobName))
+                {
+                    Debug.Log("A connection to this destination already exists.");
+                    return;
+                }
+            }
+
             GameObject newLine = Instantiate(linePrefab, canvasObject.transform);
             activeLine = newLine.GetComponent<Line>();
             allLines.Add(activeLine);
@@ -97,23 +109,17 @@ public class LineGenerator : MonoBehaviour
 
             activeLine.UpdateLine(currentPos);
 
-            // Calculate the total distance of the line so far
             float totalDistance = activeLine.GetTotalDistance();
-
-            // Calculate the predicted workers based on the total distance (e.g., 1 worker per unit distance)
             int predictedWorkers = Mathf.CeilToInt(totalDistance);
 
-            // Update the UI to reflect the predicted number of workers for the current line length
             uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk - totalDistance);
 
             if (totalDistance > currentInk)
             {
-                // Change line color to indicate insufficient workers/ink
                 activeLine.SetLineColor(activeLine.insufficientInkColor);
             }
             else
             {
-                // Reset to the default color if sufficient workers/ink are available
                 activeLine.SetLineColor(activeLine.defaultColor);
             }
         }
@@ -129,14 +135,15 @@ public class LineGenerator : MonoBehaviour
             {
                 currentInk -= totalDistance;
 
-                // Connect the line to a valid job destination
                 GameObject closestSnapPoint = GetClosestSnapPoint(activeLine.GetEndPosition());
                 if (closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint))
                 {
                     string jobName = destinationToJobMap[closestSnapPoint];
+
                     if (!activeConnections.Contains(jobName))
                     {
                         Sprite jobSymbol = GetJobSymbol(jobName);
+
                         if (
                             jobManager.TryAssignWorkersToJob(
                                 jobName,
@@ -150,20 +157,30 @@ public class LineGenerator : MonoBehaviour
                             activeConnections.Add(jobName);
                         }
                     }
+                    else
+                    {
+                        // If the job already has an active connection, destroy the line
+                        DestroyLine(activeLine);
+                    }
                 }
             }
             else
             {
-                // If the line exceeds the ink limit, delete it
-                allLines.Remove(activeLine);
-                Destroy(activeLine.gameObject);
+                DestroyLine(activeLine);
             }
 
-            // Clear the active line once finished
             activeLine = null;
-
-            // Update the UI to reflect the final worker count after line creation
             uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk);
+        }
+    }
+
+    private void DestroyLine(Line line)
+    {
+        if (line != null)
+        {
+            allLines.Remove(line);
+            Destroy(line.gameObject);
+            currentInk += line.GetTotalDistance();
         }
     }
 
@@ -211,20 +228,6 @@ public class LineGenerator : MonoBehaviour
         return closestPoint;
     }
 
-    private Vector2 ClampToCanvas(Vector2 position)
-    {
-        RectTransform canvasRect = canvasObject.GetComponent<RectTransform>();
-        Vector3[] canvasCorners = new Vector3[4];
-        canvasRect.GetWorldCorners(canvasCorners);
-
-        Vector2 canvasMin = new Vector2(canvasCorners[0].x, canvasCorners[0].y);
-        Vector2 canvasMax = new Vector2(canvasCorners[2].x, canvasCorners[2].y);
-
-        float clampedX = Mathf.Clamp(position.x, canvasMin.x, canvasMax.x);
-        float clampedY = Mathf.Clamp(position.y, canvasMin.y, canvasMax.y);
-        return new Vector2(clampedX, clampedY);
-    }
-
     private void DeleteOldestLine()
     {
         if (allLines.Count > 0)
@@ -239,8 +242,6 @@ public class LineGenerator : MonoBehaviour
                 {
                     activeConnections.Remove(jobName);
                     jobManager.FlagJobForStopAfterCompletion(jobName);
-
-                    // Ensure the job is also removed from the jobs dictionary if necessary
                     jobManager.RemoveConnection(jobName);
                 }
             }
