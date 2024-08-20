@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator; //this connects the animator so it knows when to play what animation
 
+    public AudioSource AudioSrc; //choose which audio to play
+
     void Start(){
         rb = GetComponent<Rigidbody2D>();
     }
@@ -86,6 +88,8 @@ public class PlayerController : MonoBehaviour
         heldObject.transform.position = transform.Find("Hold Point").position;
         heldObject.GetComponent<Rigidbody2D>().isKinematic = true;
         heldObject.GetComponent<Rigidbody2D>().simulated = false;
+
+        AudioSrc.Play(); // plays the audio (I hope)
     }
 
     void Drop(){
