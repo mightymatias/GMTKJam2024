@@ -17,4 +17,9 @@
 <details> 
     <summary> Screenshots </summary>
     <img src= Screenshots/MainMenu.PNG>
+    <img src= Screenshots/Story.PNG>
+    <img src= Screenshots/Tutorial.PNG>
+    <img src= Screenshots/Gameplay.PNG>
+    <img src= Screenshots/TurnIn.PNG>
+    <img src= Screenshots/ImmenentDeath.PNG>
 </details>
