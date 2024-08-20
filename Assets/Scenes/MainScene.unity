@@ -2413,6 +2413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fbefa61d1e160439d4a69db3efdae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalOrdersTurnedIn: 0
   recipeBook:
   - {fileID: 1951390238279525516, guid: db862f05428d7b74da23d840e4ec17d1, type: 3}
   - {fileID: 2913349537430579956, guid: 7cd5b998793032f478907dff2fbb3ecb, type: 3}

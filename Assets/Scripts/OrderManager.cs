@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class OrderManager : MonoBehaviour
 {
+    public int totalOrdersTurnedIn;
     public Recipe[] recipeBook;
     public int currentOrderCount = 0;
     public int maxOrderCount = 5;
@@ -145,6 +146,7 @@ public class OrderManager : MonoBehaviour
         Destroy(currentOrders[0]);
         currentOrders.RemoveAt(0);
         currentOrderCount--;
+        totalOrdersTurnedIn++;
     }
 
     
