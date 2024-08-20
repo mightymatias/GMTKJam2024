@@ -5,6 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI totalWorkersText;
     public TextMeshProUGUI activeWorkersText;
+
     private int initialTotalWorkers;
     private int activeWorkers;
 

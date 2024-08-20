@@ -12,13 +12,25 @@ public class JobManager : MonoBehaviour
     private Dictionary<string, Job> jobs = new Dictionary<string, Job>();
     private HashSet<string> activeConnections = new HashSet<string>();
 
-    private class Job
+    public class Job
     {
         public int workersAssigned;
         public float timePerWorker;
         public Timer timer;
         public bool isProcessed;
         public string jobName;
+    }
+
+    public int GetTotalActiveWorkers()
+    {
+        int totalActiveWorkers = 0;
+
+        foreach (var job in jobs.Values)
+        {
+            totalActiveWorkers += job.workersAssigned;
+        }
+
+        return totalActiveWorkers;
     }
 
     void Start()
