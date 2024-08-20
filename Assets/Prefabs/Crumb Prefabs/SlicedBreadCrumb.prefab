@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_GravityScale: 0
@@ -230,7 +230,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.38
 --- !u!114 &7969656243321699997
 MonoBehaviour:
   m_ObjectHideFlags: 0
