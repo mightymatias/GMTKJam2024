@@ -16,5 +16,5 @@
 
 <details> 
     <summary> Screenshots </summary>
-    Screenshots to be added!
+    <img src= Screenshots/MainMenu.PNG>
 </details>
