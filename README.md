@@ -1,2 +1,2 @@
-## GMTK GameJam 2024 Untitled Project <br>
-*Team Austin, Justice, and Connor*
+![image](C:\Users\Test\Documents\Coding\GMTKJam2024\Assets\Sprites\Main Menu Sprites\GMTK-Logo-v1.png)
+
