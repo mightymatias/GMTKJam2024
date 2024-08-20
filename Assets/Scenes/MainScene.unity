@@ -181,7 +181,7 @@ SpriteRenderer:
   m_SortingLayerID: -844374541
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b413e9f23c99a4b71a197e4694e21891, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1967432aeef3c47b2a57e2550f43d488, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4925,6 +4925,10 @@ PrefabInstance:
     - target: {fileID: 6684176825265040157, guid: 99b0dc899202a554595edc332624956b, type: 3}
       propertyPath: m_Name
       value: YOUDIED
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684176825265040157, guid: 99b0dc899202a554595edc332624956b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
