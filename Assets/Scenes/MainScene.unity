@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: hoverOffsetY
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 4332889329632252389, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
+      propertyPath: jobManager
+      value: 
+      objectReference: {fileID: 1759578655}
     - target: {fileID: 4400937952361404502, guid: 4c05fc179178e6c43a26d46a8c16a8eb, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3628,6 +3632,7 @@ MonoBehaviour:
   dynamicTimerController: {fileID: 1759578652}
   uiManager: {fileID: 1369224465}
   crumbSpawner: {fileID: 664075240}
+  availableWorkers: 0
 --- !u!114 &1759578652
 MonoBehaviour:
   m_ObjectHideFlags: 0

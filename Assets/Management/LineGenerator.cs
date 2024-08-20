@@ -131,42 +131,49 @@ public class LineGenerator : MonoBehaviour
         {
             float totalDistance = activeLine.GetTotalDistance();
 
-            if (totalDistance <= currentInk)
+            // Ensure the line has a valid end point
+            GameObject closestSnapPoint = GetClosestSnapPoint(activeLine.GetEndPosition());
+            bool hasValidEndPoint =
+                closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint);
+            bool canDeductInk = totalDistance <= currentInk;
+
+            // Only deduct ink and assign workers if the line is valid and has a valid endpoint
+            if (hasValidEndPoint && canDeductInk)
             {
-                currentInk -= totalDistance;
-
-                GameObject closestSnapPoint = GetClosestSnapPoint(activeLine.GetEndPosition());
-                if (closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint))
+                string jobName = destinationToJobMap[closestSnapPoint];
+                if (!activeConnections.Contains(jobName))
                 {
-                    string jobName = destinationToJobMap[closestSnapPoint];
+                    Sprite jobSymbol = GetJobSymbol(jobName);
 
-                    if (!activeConnections.Contains(jobName))
-                    {
-                        Sprite jobSymbol = GetJobSymbol(jobName);
-
-                        if (
-                            jobManager.TryAssignWorkersToJob(
-                                jobName,
-                                Mathf.CeilToInt(totalDistance),
-                                20f,
-                                jobSymbol,
-                                activeLine.GetInstanceID().ToString()
-                            )
+                    if (
+                        jobManager.TryAssignWorkersToJob(
+                            jobName,
+                            Mathf.CeilToInt(totalDistance),
+                            20f,
+                            jobSymbol,
+                            activeLine.GetInstanceID().ToString()
                         )
-                        {
-                            activeConnections.Add(jobName);
-                        }
+                    )
+                    {
+                        activeConnections.Add(jobName);
+                        currentInk -= totalDistance; // Deduct ink only after job assignment
                     }
                     else
                     {
-                        // If the job already has an active connection, destroy the line
-                        DestroyLine(activeLine);
+                        // Failed to assign workers, destroy the line
+                        DestroyLine(activeLine, false); // Pass false to indicate no ink refund needed
                     }
+                }
+                else
+                {
+                    // Job already has a connection, destroy the line
+                    DestroyLine(activeLine, false); // Pass false to indicate no ink refund needed
                 }
             }
             else
             {
-                DestroyLine(activeLine);
+                // Line is invalid or there isn't enough ink, destroy the line
+                DestroyLine(activeLine, false); // Pass false to indicate no ink refund needed
             }
 
             activeLine = null;
@@ -174,13 +181,40 @@ public class LineGenerator : MonoBehaviour
         }
     }
 
-    private void DestroyLine(Line line)
+    private void DestroyLine(Line line, bool refundInk)
     {
         if (line != null)
         {
             allLines.Remove(line);
+
+            if (refundInk)
+            {
+                currentInk += line.GetTotalDistance(); // Only refund ink if specified
+            }
+
+            // If the line was connected to a job, handle the connection removal
+            GameObject closestSnapPoint = GetClosestSnapPoint(line.GetEndPosition());
+            if (closestSnapPoint != null && destinationToJobMap.ContainsKey(closestSnapPoint))
+            {
+                string jobName = destinationToJobMap[closestSnapPoint];
+                if (activeConnections.Contains(jobName))
+                {
+                    // Check if there is still another line connected to this job
+                    bool hasOtherActiveLine = allLines.Exists(l =>
+                        GetClosestSnapPoint(l.GetEndPosition()) == closestSnapPoint && l != line
+                    );
+
+                    if (!hasOtherActiveLine)
+                    {
+                        activeConnections.Remove(jobName);
+                        jobManager.FlagJobForStopAfterCompletion(jobName);
+                        jobManager.RemoveConnection(jobName);
+                    }
+                }
+            }
+
             Destroy(line.gameObject);
-            currentInk += line.GetTotalDistance();
+            uiManager.UpdateActiveWorkersBasedOnInk(maxInk, currentInk);
         }
     }
 
