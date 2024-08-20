@@ -310,6 +310,7 @@ public class LineGenerator : MonoBehaviour
                 Debug.LogError("Job name not recognized: " + jobName);
                 return;
         }
+
         // Calculate the number of workers needed based on the length of the active line
         float lineLength = activeLine.GetTotalDistance();
         int workersForJob = Mathf.CeilToInt(lineLength);

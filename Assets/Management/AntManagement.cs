@@ -6,6 +6,8 @@ public class AntManagement : MonoBehaviour
     public int totalNPCWorkers = 10;
     public DynamicTimerController dynamicTimerController;
     public UIManager uiManager;
+    public CrumbSpawning crumbSpawner; // Reference to CrumbSpawner
+
     private int availableWorkers;
 
     private Dictionary<string, Job> jobs = new Dictionary<string, Job>();
@@ -17,6 +19,7 @@ public class AntManagement : MonoBehaviour
         public float timePerWorker;
         public Timer timer;
         public bool isProcessed; // Flag to ensure workers are only released once
+        public string jobName; // Job name directly associated with the crumb type
     }
 
     void Start()
@@ -56,8 +59,9 @@ public class AntManagement : MonoBehaviour
             workersAssigned = numberOfWorkers,
             timePerWorker = timePerWorker,
             timer = jobTimer,
-            isProcessed =
-                false // Initialize as unprocessed
+            isProcessed = false, // Initialize as unprocessed
+            jobName =
+                jobName // Store job name
             ,
         };
 
@@ -111,6 +115,9 @@ public class AntManagement : MonoBehaviour
                 uiManager.SetActiveWorkers(uiManager.GetActiveWorkers() - job.workersAssigned);
 
                 Debug.Log($"Job '{jobName}' completed. Checking if it was flagged for stop...");
+
+                // Trigger crumb spawn
+                crumbSpawner?.SpawnCrumb(jobName);
 
                 if (!ongoingJobs.Contains(jobName))
                 {
