@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1784037653351853485}
-  Smoothness: 0.5
-  StartingWidth: 0.2
-  EndingWidth: 0.2
+  Smoothness: 0.1
+  StartingWidth: 0.15
+  EndingWidth: 0.15
   NumCapVertices: 10
 --- !u!120 &1784037653351853485
 LineRenderer:
@@ -89,9 +89,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1827682011
+  m_SortingLayer: 8
+  m_SortingOrder: 32767
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
@@ -102,8 +102,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.10422897
-        value: 0.04406166
+        time: 0.10616684
+        value: 0.014642715
         inSlope: 0
         outSlope: 0
         tangentMode: 0
