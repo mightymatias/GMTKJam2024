@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
@@ -58,11 +59,8 @@ public class OrderManager : MonoBehaviour
     }
 
     public void NewOrder(){
-
         /*----------Get a random recipe to cook----------*/
-
         Recipe randomRecipe = GetRandomOrder();
-
         /*-----------Create a new order prefab-----------*/
         GameObject canvasObject = GameObject.Find("Canvas");
         UnityEngine.Vector2 spawnPoint = new UnityEngine.Vector2(-1050,436);
@@ -70,12 +68,10 @@ public class OrderManager : MonoBehaviour
         newOrderCard.transform.SetParent(canvasObject.transform);
         RectTransform newOrderCardRectTransform = newOrderCard.GetComponent<RectTransform>();
         newOrderCardRectTransform.anchoredPosition = spawnPoint;
-
-
         /*------------Set up the order prefab------------*/
-
         // Set the sprite of the final product
         newOrderCard.transform.Find("Final Product").GetComponent<SpriteRenderer>().sprite = randomRecipe.product.GetComponent<SpriteRenderer>().sprite;
+        newOrderCard.GetComponent<Order>().recipe = randomRecipe;
         // Getting references to the ingredient panels
         GameObject ingredient1, ingredient2, ingredient3, ingredient4;
         ingredient1 = newOrderCard.transform.Find("Ingredient1").gameObject;
@@ -91,27 +87,34 @@ public class OrderManager : MonoBehaviour
             cardIngredients[i].GetComponent<SpriteRenderer>().sprite = ingredient.GetComponent<SpriteRenderer>().sprite;
             i++;
         }
-
         /*---Add the order prefab to the array of orders---*/
-
         currentOrders.Add(newOrderCard);
         currentOrderCount++;
-
         /*-----Move all orders to the left-----*/
         SlideOrderTickets();
-
     }
 
     public void DestroyOrder(GameObject product){
-        GameObject remove = currentOrders.Find(orderCard => {
-            var orderScript = orderCard.GetComponent<Recipe>();
-            return orderScript != null && orderScript.product == product;
-        });
+        int i = 0;
+        int positionToDelete = -1;
+        foreach (GameObject order in currentOrders){
+            Debug.Log("You gave: " + product + " Order called for: " + order.GetComponent<Order>().recipe.product);
+            if (order.GetComponent<Order>().recipe.GameObject().GetComponent<Crumb>().crumbName == product.GameObject().GetComponent<Crumb>().crumbName){
+                Debug.Log("Those are the same!");
+                positionToDelete = i;
+                break;
+            }
 
-        if (remove != null){
-            currentOrders.Remove(remove);
-            Destroy(remove);
+            i++;
+        }
+
+        if (positionToDelete != -1){
+            GameObject primedForRemoval = currentOrders[positionToDelete];
+            Debug.Log("We're deleting " + primedForRemoval);
+            currentOrders.RemoveAt(positionToDelete);
+            Destroy(primedForRemoval);
             currentOrderCount--;
+            
         }
     }
 

@@ -37,19 +37,13 @@ public class HandTake : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    public void checkForFood(){
-        //if food is in the trigger, collect it
-        moveFoodtoHand();
-    }
-
-    public void moveFoodtoHand(){
-
-    }
-
     public void OnTriggerEnter2D(Collider2D other){
         GameObject otherObject = other.gameObject;
         otherObject.transform.position = transform.Find("Interact Position").position;
         otherObject.transform.SetParent(transform);
+
+        OrderManager orderManager = FindObjectOfType<OrderManager>();
+        orderManager.DestroyOrder(otherObject);
     }
         
 

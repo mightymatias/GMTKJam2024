@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Order : MonoBehaviour
 {
+    public Recipe recipe;
     // Start is called before the first frame update
     void Start()
     {
