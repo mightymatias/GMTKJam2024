@@ -1,4 +1,4 @@
-<img src="Assets/Sprites/Main Menu Sprites/GMTK-Logo-v1.png" alt="image" style="zoom:24%;" />
+<img src="Assets/Sprites/Main Menu Sprites/GMTK-Logo-v1.png" alt="image" style="zoom:5%;" />
 
 # Food For GiANTs </br>
 
