@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
 {
-    public int totalOrdersTurnedIn;
+    public int ordersCompleted = 0;
+    public TextMeshProUGUI ordersCompletedText;
     public Recipe[] recipeBook;
     public int currentOrderCount = 0;
     public int maxOrderCount = 5;
@@ -30,14 +32,7 @@ public class OrderManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            NewOrder();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            DevDestroyOrder();
-        }
+        ordersCompletedText.text = ordersCompleted.ToString();
     }
 
     IEnumerator SpawnItems()
@@ -144,6 +139,7 @@ public class OrderManager : MonoBehaviour
                 Debug.Log("Those are the same!");
                 positionToDelete = i;
                 AudioSrcYummy.Play(); //plays the yummy sound because correct order
+                ordersCompleted++;
                 break;
             }
 
@@ -206,6 +202,6 @@ public class OrderManager : MonoBehaviour
         Destroy(currentOrders[0]);
         currentOrders.RemoveAt(0);
         currentOrderCount--;
-        totalOrdersTurnedIn++;
+        ordersCompleted++;
     }
 }
