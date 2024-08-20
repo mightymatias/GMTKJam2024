@@ -3177,10 +3177,7 @@ GameObject:
   - component: {fileID: 1759578652}
   - component: {fileID: 1759578651}
   - component: {fileID: 1759578653}
-<<<<<<< Updated upstream
   - component: {fileID: 1759578654}
-=======
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3363,20 +3360,14 @@ MonoBehaviour:
   timerManager: {fileID: 1107991996}
   basePosition: {x: 75, y: 700, z: 0}
   verticalSpacing: 150
-<<<<<<< Updated upstream
 --- !u!82 &1759578653
 AudioSource:
-=======
---- !u!114 &1759578653
-MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759578646}
   m_Enabled: 1
-<<<<<<< Updated upstream
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2bde60d3d2d047c68a7853a945e9deb, type: 3}
@@ -3561,16 +3552,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838bf74e9ca38fc47a8f7e05313bc9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalNPCWorkers: 10
-  dynamicTimerController: {fileID: 1759578652}
-  uiManager: {fileID: 1369224465}
-  crumbSpawner: {fileID: 664075240}
->>>>>>> Stashed changes
 --- !u!1 &1760772822
 GameObject:
   m_ObjectHideFlags: 0
