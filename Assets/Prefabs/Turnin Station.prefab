@@ -51,6 +51,7 @@ MonoBehaviour:
   interactionTime: 6
   spawnableHands:
   - {fileID: 8990270331508615169, guid: 616b5fe33430d914bb367c8aff2635c7, type: 3}
+  - {fileID: 8990270331508615169, guid: 547de148ca24d4398af3a9c8bc2c6e51, type: 3}
   spawnPosition: {x: 11, y: 9}
 --- !u!212 &555158421253878104
 SpriteRenderer:

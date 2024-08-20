@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator; //this connects the animator so it knows when to play what animation
 
     public AudioSource AudioSrc; //choose which audio to play
+    public AudioSource AudioSrcPlace; //the sound that plays when you place an item on a plate
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Successfully put crumb in station");
                 closestStation.StartInteraction(heldObject.GetComponent<Crumb>()); // Start the station interaction
                 heldObjectOGParent = null; // Remove the reference to the OG parent as we don't need it anymore
+                AudioSrcPlace.Play();
             }  
         }
         // At this point, if we still have an object, it needs to go on the ground

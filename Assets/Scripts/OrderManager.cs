@@ -16,7 +16,9 @@ public class OrderManager : MonoBehaviour
     public GameObject orderCardPrefab;
     public float orderShiftAmount = 100f;
     public float orderSlideTime = 1;
-    
+    public AudioSource AudioSrcYummy; //choose the yummy sound effect
+    public AudioSource AudioSrcYucky; //choose bad sound effect
+
     [Header("Recipe Spawn Location")]
     public int PrefabX = -1050;
     public int PrefabY = 386;
@@ -141,6 +143,7 @@ public class OrderManager : MonoBehaviour
             {
                 Debug.Log("Those are the same!");
                 positionToDelete = i;
+                AudioSrcYummy.Play(); //plays the yummy sound because correct order
                 break;
             }
 
@@ -155,6 +158,12 @@ public class OrderManager : MonoBehaviour
             Destroy(primedForRemoval);
             currentOrderCount--;
         }
+
+        else
+        {
+            AudioSrcYucky.Play();
+        }
+
     }
 
     public void SlideOrderTickets()
