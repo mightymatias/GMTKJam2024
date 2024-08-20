@@ -84,6 +84,22 @@ public class LineGenerator : MonoBehaviour
             // Ensure the line starts at the nest
             if (Vector2.Distance(mousePos, nestObject.transform.position) <= snapRadius)
             {
+                // Get the nearest snap point to check if a connection already exists
+                GameObject snappedObject = GetClosestSnapPoint(mousePos);
+
+                if (snappedObject != null && destinationToJobMap.ContainsKey(snappedObject))
+                {
+                    string jobName = destinationToJobMap[snappedObject];
+                    if (activeConnections.Contains(jobName))
+                    {
+                        Debug.Log(
+                            $"A connection to {jobName} already exists. Cannot draw another line."
+                        );
+                        return; // Exit early to prevent line creation
+                    }
+                }
+
+                // Proceed with creating a new line
                 GameObject newLine = Instantiate(linePrefab, canvasObject.transform);
                 activeLine = newLine.GetComponent<Line>();
                 allLines.Add(activeLine);
@@ -130,7 +146,11 @@ public class LineGenerator : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log($"A connection to {jobName} is already active.");
+                            Debug.Log(
+                                $"A connection to {jobName} is already active. Deleting line."
+                            );
+                            allLines.Remove(activeLine);
+                            Destroy(activeLine.gameObject);
                         }
                     }
                 }
@@ -322,6 +342,6 @@ public class LineGenerator : MonoBehaviour
         // Mark this connection as active
         activeConnections.Add(jobName);
 
-        Debug.Log($"Job {jobName} started with {workersForJob} workers for {jobDuration} seconds.");
+        // Debug.Log($"Job {jobName} started with {workersForJob} workers for {jobDuration} seconds.");
     }
 }

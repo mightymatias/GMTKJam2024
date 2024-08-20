@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1784037653351853485}
   Smoothness: 0.1
-  StartingWidth: 0.15
-  EndingWidth: 0.15
+  StartingWidth: 0.1
+  EndingWidth: 0.1
   NumCapVertices: 10
 --- !u!120 &1784037653351853485
 LineRenderer:
