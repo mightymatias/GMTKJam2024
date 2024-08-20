@@ -26,7 +26,7 @@ public class Line : MonoBehaviour
         lineRenderer.startWidth = StartingWidth;
         lineRenderer.endWidth = EndingWidth;
         lineRenderer.numCapVertices = NumCapVertices;
-        lineRenderer.sortingLayerName = "Foreground";
+        lineRenderer.sortingLayerName = "UI";
     }
 
     public float UpdateLine(Vector2 position)
